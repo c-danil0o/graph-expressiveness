@@ -2,54 +2,64 @@
 
 {% block content %}
 <div id="view">
-    <div id="top_bar">
-        <form>
-            <label>Select source:</label>
-            <select id="sources">
-                {% for source in sources %}
-                <option value="{{ source.name }}">{{ source.name }}</option>
-                {% endfor %}
-            </select>
-            <label>Select visualizer:</label>
-            <select id="visualizers">
-
-                {% for visualizer in visualizers %}
-                <option value="{{ visualizer.name }}">{{ visualizer.name }}</option>
-                {% endfor %}
-            </select>
-        </form>
-        <div id="search">
-            <div id="search-filter">
-                <input id="query" type="text" name="query" placeholder="Input filter"/>
-<!--                <div id="search_btn" onclick="searchGraph()">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <div id="filter_btn" onclick="getVisualizationFiltered()">
-                    <i class="fa-solid fa-filter"></i>
-                </div>-->
+    <div class="logo">
+        <img src="./../static/core/graph.png" width="20px" alt="logo"/>
+        <span>Graph Visualizer</span>
+    </div>
+    <div id="select">
+        <form id="bar_form">
+            <div class="selection-item">
+                <label for="sources">Select source:</label>
+                <select id="sources">
+                    {% for source in sources %}
+                    <option value="{{ source.name }}">{{ source.name }}</option>
+                    {% endfor %}
+                </select>
             </div>
-            <button class="vis-btn" type="button">Generate</button>
+            <div class="selection-item">
+                <label for="visualizers">Select visualizer:</label>
+                <select id="visualizers">
+                    {% for visualizer in visualizers %}
+                    <option value="{{ visualizer.name }}">{{ visualizer.name }}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="selection-item">
+                <label for="files">Select file:</label>
+                <select id="files">
+                    {% for file in files %}
+                    <option value="{{ file.name }}">{{ file.name }}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+
+        </form>
+        <button class="button_primary center" type="button">Generate</button>
+
+    </div>
+    <div id="top_bar">
+
+        <div id="filter">
+            <input id="query" type="text" name="query" placeholder="Enter query"/>
+            <button class="button_primary" type="button">Filter</button>
+
+
         </div>
 
     </div>
 
 
     <div id="tree-view">
-
+        Tree view
     </div>
 
     <div id="bird-view">
-        <div class="bv-display">
-
-        </div>
+        Bird view
     </div>
 
-    <div id="graph-div" style="
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background-color: red; */
-    ">
+    <div id="graph">
 
     </div>
 </div>
