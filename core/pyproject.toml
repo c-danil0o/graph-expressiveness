@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-explorer-core"
+authors = [
+    {name = "Aleksa Perovic"},
+    {name = "Danilo Cvijetic"},
+    {name = "Vladimir Cornenki"},
+    {name = "Nemanja Stjepanovic"}
+]
+description = "Core plugin for graph visualizer"
+requires-python = ">=3.7"
+dependencies = [
+    'graph-explorer-api',
+]
+version = "0.1"
+
+[project.scripts]
+
+[project.entry-points."graph.core"]
+models = "models"
+use_cases = "use_cases"

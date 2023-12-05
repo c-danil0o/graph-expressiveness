@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-explorer-simple-visualizer"
+authors = [
+    {name = "Aleksa Perovic"},
+    {name = "Danilo Cvijetic"},
+    {name = "Vladimir Cornenki"},
+    {name = "Nemanja Stjepanovic"}
+]
+description = "Twitter data source plugin for graph explorer"
+requires-python = ">=3.7"
+dependencies = [
+    'graph-explorer-api',
+]
+version = "0.1"
+
+[project.scripts]
+
+[project.entry-points."graph.visualizers"]
+simple_visualizer = "plugin.visualizer"
