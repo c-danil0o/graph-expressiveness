@@ -1,24 +1,12 @@
-# Setup
-from web3 import Web3
+from api.src.services.source_plugin import SourcePlugin
 
-alchemy_url = "https://eth-mainnet.g.alchemy.com/v2/b4NTkO8I0PoGbjnrRkR-p0JflJRWY-6v"
-w3 = Web3(Web3.HTTPProvider(alchemy_url))
 
-# Print if web3 is successfully connected
-print(w3.is_connected())
+class EthereumDatasource(SourcePlugin):
+    def load(self):
+        pass
 
-# Get the latest block number
-latest_block = w3.eth.get_block(18806431)
-print(len(latest_block['transactions']))
+    def identifier(self):
+        return "graph-explorer-ethereum-datasource"
 
-ending_blocknumber = 18721960
-starting_blocknumber = ending_blocknumber - 3
-
-for x in range(starting_blocknumber, ending_blocknumber):
-    block = w3.eth.get_block(x, False)
-    print(block, end='\n\n\n')
-    # for transaction in block['transactions']:
-    #     print('transaction')
-    #     print(transaction['to'])
-    #     print(transaction['from'], end='\n')
-
+    def name(self):
+        return "ethereum_datasource"
