@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3014b93b-d9bf-42e7-9d74-b3aa3cec1206" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/data_source_ethereum/src/plugin/get_block.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graph_explorer/app/templates/simple_view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/simple_visualizer/src/plugin/simple_view.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/types/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/types/graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/models/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/models/graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_ethereum/src/plugin/data_source.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_source_ethereum/src/plugin/data_source.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/services/visualizer_plugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/services/visualizer_plugin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/graph_explorer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/graph_explorer/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simple_visualizer/src/plugin/visualizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple_visualizer/src/plugin/visualizer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -35,6 +41,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2Z5McV8u2DDQ3OEmjmvLBTX86Bd" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,7 +54,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/eth",
+    "git-widget-placeholder": "feature/simple-visualizer",
     "last_opened_file_path": "/home/daniloc/Code/SOK/ComponentDrivenDevelopment",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -90,7 +99,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/graph_exp$data_source.coverage" NAME="data_source Coverage Results" MODIFIED="1702826847565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_source_ethereum/src/plugin" />
+    <SUITE FILE_PATH="coverage/graph_exp$data_source.coverage" NAME="data_source Coverage Results" MODIFIED="1702826820939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_source_ethereum/src/plugin" />
     <SUITE FILE_PATH="coverage/graph_exp$settings.coverage" NAME="settings Coverage Results" MODIFIED="1701624023912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/graph_explorer/graph_explorer" />
     <SUITE FILE_PATH="coverage/graph_exp$get_block.coverage" NAME="get_block Coverage Results" MODIFIED="1702835124642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_source_ethereum/src/plugin" />
     <SUITE FILE_PATH="coverage/graph_exp$graph.coverage" NAME="graph Coverage Results" MODIFIED="1702835120212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api/src/types" />
