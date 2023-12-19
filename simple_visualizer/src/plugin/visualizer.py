@@ -6,7 +6,13 @@ from api.src.services.visualizer_plugin import VisualizerPlugin
 from api.src.types.graph import Graph, Node, Edge
 
 
-class SimpleVisualizer(VisualizerPlugin):
+class Visualizer(VisualizerPlugin):
+
+    def identifier(self):
+        return "graph-explorer-simple-visualizer"
+
+    def name(self):
+        return "simple-visualizer"
 
     def show(self):
 
