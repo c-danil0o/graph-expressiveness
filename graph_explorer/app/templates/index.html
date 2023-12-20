@@ -70,11 +70,8 @@
     </style>
     <div id="graph">
         <svg id="visualization">
-        {% block simple_view %}
-        {% include 'simple_view.html' %}
-        {% endblock %}
+            {{ visualization_html|safe }}
         </svg>
-
     </div>
 </div>
 
