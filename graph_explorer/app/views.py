@@ -3,17 +3,14 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
 import sys
-sys.path.append(r'C:\Users\Vladimir\Desktop\prog\5semestar\sok\projekat\graph-expressiveness')
-
+#sys.path.append(r'C:\Users\Vladimir\Desktop\prog\5semestar\sok\projekat\graph-expressiveness')
+sys.path.append(r'/home/daniloc/Code/SOK/graph_exp')
 from core.src.use_cases import load_plugins
 
 # from plugin.visualizer import SimpleVisualizer
 #
 
-a = {}
-a['blocks_num'] = 1
-a['graph_name'] = 'asd'
-a['latest_block'] = -1
+a = {'blocks_num': 1, 'graph_name': 'asd', 'latest_block': -1}
 
 
 def test(request):
