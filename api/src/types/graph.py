@@ -2,7 +2,7 @@ import typing
 
 
 class Node:
-    def __init__(self, node_id: int, data: dict):
+    def __init__(self, node_id: str, data: dict):
         self.node_id = node_id
         self.data = data
 
@@ -17,7 +17,7 @@ class Node:
 
 
 class Edge:
-    def __init__(self, edge_id: int, data: dict, source: Node, destination: Node, directed: bool):
+    def __init__(self, edge_id: str, data: dict, source: Node, destination: Node, directed: bool):
         self.edge_id = edge_id
         self.data = data
         self.source = source

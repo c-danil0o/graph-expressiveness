@@ -1,3 +1,5 @@
+from itertools import filterfalse
+
 from api.src.services.source_plugin import SourcePlugin
 
 # Setup
@@ -23,19 +25,23 @@ def load_from_blocks(blocks_num: int, graph_name: str, latest_block: int = -1) -
     first: bool = False
     for block in blocks:
         for transaction in block['transactions']:
-
-            node_from: Node = Node(transaction['from'], {})
-            node_to: Node = Node(transaction['to'], {})
-            transaction_edge = Edge(transaction['transactionIndex'],
-                                    {'blockNumber': transaction['blockNumber'], 'gas': transaction['gas'],
-                                     'gasPrice': transaction['gasPrice']}, source=node_from, destination=node_to,
-                                    directed=True)
-            if not first:
-                first = True
-                _graph.set_root(node_from)
-            _graph.add_node(node_from)
-            _graph.add_node(node_to)
-            _graph.add_edge(transaction_edge)
+            transaction_node: Node = Node(str(transaction['hash']),
+                                          {'from': transaction['from'], 'to': transaction['to'],
+                                           'blockNumber': transaction['blockNumber'],
+                                           'gas': transaction['gas'],
+                                           'gasPrice': transaction['gasPrice'],
+                                           'hash': transaction['hash'],
+                                           'connected': False})
+            _graph.add_node(transaction_node)
+    for node in _graph.nodes:
+        for node2 in _graph.nodes:
+            if node.data['from'] == node2.data['to']:
+                node.data['connected'] = True
+                node2.data['connected'] = True
+                new_edge: Edge = Edge(node.data['from'], {}, node, node2, True)
+                _graph.add_edge(new_edge)
+    _graph.nodes = list(filterfalse(lambda x: not x.data['connected'], _graph.nodes))
+    print(_graph)
     return _graph
 
 

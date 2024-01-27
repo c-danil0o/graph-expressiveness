@@ -17,7 +17,7 @@
 <script>
     function nodeClick(el){
         console.log(el);
-       alert("ID: "+ el.textContent);
+      // alert("ID: "+ el.textContent);
     }
 </script>
 
@@ -42,8 +42,8 @@
         .nodes(d3.values(nodes))
         .links(links)
         .on("tick", tick)
-        .linkDistance(300)
-        .charge(-200)
+        .linkDistance(200)
+        .charge(-700)
         .start();
 
     var svg = d3.select('svg');
