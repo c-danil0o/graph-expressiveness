@@ -4,13 +4,13 @@ from django.shortcuts import render
 import sys
 
 # sys.path.append(r'C:\Users\Vladimir\Desktop\prog\5semestar\sok\projekat\graph-expressiveness')
-sys.path.append(r'/home/daniloc/Code/SOK/graph_exp')
+sys.path.append(r'/home/dc/Code/SOK/graph_exp')
 from core.src.use_cases import load_plugins
 
 # from plugin.visualizer import SimpleVisualizer
 #
 
-a = {'blocks_num': 2, 'graph_name': 'asd', 'latest_block': -1}
+a = {'blocks_num': 10, 'graph_name': 'asd', 'latest_block': -1}
 
 
 def test(request):

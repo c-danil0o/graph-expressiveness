@@ -1,3 +1,4 @@
+import random
 from itertools import filterfalse
 
 from api.src.services.source_plugin import SourcePlugin
@@ -22,27 +23,52 @@ def load_from_blocks(blocks_num: int, graph_name: str, latest_block: int = -1) -
     print(w3.is_connected())
     _graph = Graph(graph_name, None, [], [])
     blocks = [w3.eth.get_block(block, True) for block in range(start_block_number, latest_block_number)]
-    first: bool = False
+    root: Node = Node(0, {'connected': 1})
+    _graph.add_node(root)
+    _graph.set_root(root)
     for block in blocks:
         for transaction in block['transactions']:
-            transaction_node: Node = Node(str(transaction['hash']),
+            transaction_node: Node = Node(int.from_bytes(transaction['hash'], byteorder='big'),
                                           {'from': transaction['from'], 'to': transaction['to'],
                                            'blockNumber': transaction['blockNumber'],
                                            'gas': transaction['gas'],
                                            'gasPrice': transaction['gasPrice'],
-                                           'hash': transaction['hash'],
-                                           'connected': False})
+                                           'connected': 0})
             _graph.add_node(transaction_node)
     for node in _graph.nodes:
         for node2 in _graph.nodes:
-            if node.data['from'] == node2.data['to']:
-                node.data['connected'] = True
-                node2.data['connected'] = True
+            if node != root and node2 != root and node.data['from'] == node2.data['to'] and node != node2:
+                node.data['connected'] = 1
+                node2.data['connected'] = 1
                 new_edge: Edge = Edge(node.data['from'], {}, node, node2, True)
+                #      root_edge = Edge(1, {}, root, node, True)
                 _graph.add_edge(new_edge)
+            #   _graph.add_edge(root_edge)
     _graph.nodes = list(filterfalse(lambda x: not x.data['connected'], _graph.nodes))
-    print(_graph)
+    visited: list[Node] = []
+    for node in _graph.nodes:
+        if node != root and node not in visited:
+            dfs_undirected(_graph, visited, node)
+            root_edge = Edge(1, {}, root, visited[-1], True)
+            _graph.add_edge(root_edge)
     return _graph
+
+
+def get_neighbours_undirected(graph: Graph, node: Node):
+    neighbours = []
+    for edge in graph.edges:
+        if node == edge.source:
+            neighbours.append(edge.destination)
+        if node == edge.destination:
+            neighbours.append(edge.source)
+    return neighbours
+
+
+def dfs_undirected(graph: Graph, visited: list[Node], node: Node):  # function for dfs
+    if node not in visited:
+        visited.append(node)
+        for neighbour in get_neighbours_undirected(graph, node):
+            dfs_undirected(graph, visited, neighbour)
 
 
 class DataSource(SourcePlugin):

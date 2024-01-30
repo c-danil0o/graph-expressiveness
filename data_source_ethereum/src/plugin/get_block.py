@@ -23,6 +23,7 @@ def load_from_blocks(blocks_num: int, graph_name: str, latest_block: int = -1) -
     first: bool = False
     for block in blocks:
         for transaction in block['transactions']:
+            print(transaction)
             transaction_node: Node = Node(str(transaction['hash']),
                                           {'from': transaction['from'], 'to': transaction['to'],
                                            'blockNumber': transaction['blockNumber'],

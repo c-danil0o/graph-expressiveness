@@ -2,7 +2,7 @@ import typing
 
 
 class Node:
-    def __init__(self, node_id: str, data: dict):
+    def __init__(self, node_id: int, data: dict):
         self.node_id = node_id
         self.data = data
 
@@ -13,11 +13,11 @@ class Node:
         return self.node_id == other.node_id
 
     def __str__(self):
-        return self.node_id
+        return str(self.node_id)
 
 
 class Edge:
-    def __init__(self, edge_id: str, data: dict, source: Node, destination: Node, directed: bool):
+    def __init__(self, edge_id: int, data: dict, source: Node, destination: Node, directed: bool):
         self.edge_id = edge_id
         self.data = data
         self.source = source
@@ -52,6 +52,21 @@ class Graph:
     def add_edges(self, edges: list[Edge]):
         pass
 
+    def get_neighbours(self, node: Node):
+        neighbours = []
+        for edge in self.edges:
+            if edge.directed:
+                if node == edge.source:
+                    neighbours.append(edge.destination)
+            else:
+                if node == edge.source:
+                    neighbours.append(edge.destination)
+                if node == edge.destination:
+                    neighbours.append(edge.source)
+        return neighbours
+
+
+
     def __str__(self):
         nodes_str = ""
         edges_str = ""
@@ -61,3 +76,13 @@ class Graph:
             edges_str += str(edge) + '\n'
         return "Name: " + self.name + "\nRoot: " + str(
             self.root) + '\n' + "Nodes: \t\t" + nodes_str + "Edges: \t\t" + edges_str
+
+    def dfs(self, visited: list[Node], node: Node):  # function for dfs
+        if node not in visited:
+            visited.append(node)
+            for neighbour in self.get_neighbours(node):
+                self.dfs(visited, neighbour)
+
+
+
+
