@@ -5,23 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3014b93b-d9bf-42e7-9d74-b3aa3cec1206" name="Changes" comment="merge">
-      <change beforePath="$PROJECT_DIR$/.idea/graph_exp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/graph_exp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/models/plugin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/static/tree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/use_cases/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/use_cases/main_view.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/use_cases/tree_view.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graph_explorer/app/templates/bird_view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graph_explorer/app/templates/main_view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graph_explorer/app/templates/tree_view.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/types/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/types/graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_ethereum/src/plugin/data_source.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_source_ethereum/src/plugin/data_source.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_ethereum/src/plugin/get_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_source_ethereum/src/plugin/get_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/use_cases/load_plugins.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/load_plugins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/use_cases/mainview.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/bird_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_source_ethereum/src/plugin/get_block.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/templates/simple_view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graph_explorer/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_visualizer/src/plugin/simple_visualization.html" beforeDir="false" afterPath="$PROJECT_DIR$/simple_visualizer/src/plugin/simple_visualization.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="Python Script" />
       </list>
@@ -48,7 +60,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.Django.executor": "Run",
+    "Django Server.Django.executor": "Debug",
     "Python.data_source.executor": "Run",
     "Python.get_block.executor": "Run",
     "Python.views.executor": "Run",
@@ -56,14 +68,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "fix/ethereum-datasource",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "develop",
     "last_opened_file_path": "/home/dc/Code/SOK/graph_exp/graph_explorer/graph_explorer/settings.py",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.django.DjangoModulesConfigurable",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -191,15 +204,28 @@
       <workItem from="1706442342128" duration="373000" />
       <workItem from="1706628210316" duration="299000" />
       <workItem from="1706637986323" duration="7272000" />
-      <workItem from="1706652613970" duration="3088000" />
+      <workItem from="1706652613970" duration="3681000" />
+      <workItem from="1706713307820" duration="1764000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
+    <MESSAGE value="refactored parsing algorithm and connected subgraphs #7" />
     <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
   <component name="XDebuggerManager">
@@ -207,7 +233,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/graph_explorer/app/views.py</url>
-          <line>19</line>
+          <line>18</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
