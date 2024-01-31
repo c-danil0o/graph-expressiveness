@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3014b93b-d9bf-42e7-9d74-b3aa3cec1206" name="Changes" comment="merge">
-      <change afterPath="$PROJECT_DIR$/core/src/models/plugin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/static/tree.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/use_cases/loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/use_cases/main_view.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/use_cases/tree_view.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graph_explorer/app/templates/bird_view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graph_explorer/app/templates/main_view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graph_explorer/app/templates/tree_view.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/use_cases/load_plugins.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/load_plugins.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/use_cases/mainview.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/bird_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_ethereum/src/plugin/get_block.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/graph_explorer/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_explorer/app/templates/simple_view.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/graph_explorer/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graph_explorer/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/views.py" afterDir="false" />
     </list>
@@ -233,7 +221,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/graph_explorer/app/views.py</url>
-          <line>18</line>
+          <line>21</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

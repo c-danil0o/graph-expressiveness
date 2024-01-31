@@ -1,64 +1,66 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div id="view">
-    <div class="logo">
-        <img src="../static/core/graph.png" width="20px" alt="logo"/>
-        <span>Graph Visualizer</span>
-    </div>
-    <div id="select">
-        <form id="bar_form">
-            <div class="selection-item">
-                <label for="sources">Select source:</label>
-                <select id="sources">
-                    {% for source in sources %}
-                    <option value="{{ source.plugin.name }}">{{ source.plugin.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="selection-item">
-                <label for="visualizers">Select visualizer:</label>
-                <select id="visualizers">
-                    {% for visualizer in visualizers %}
-                    <option value="{{ visualizer.plugin.name }}">{{ visualizer.plugin.name }}</option>
-                    {% endfor %}
-                </select>
+    <div id="view">
+        <div class="logo">
+            <img src="../static/core/graph.png" width="20px" alt="logo"/>
+            <span>Graph Visualizer</span>
+        </div>
+        <div id="select">
+            <form id="bar_form">
+                <div class="selection-item">
+                    <label for="sources">Select source:</label>
+                    <select id="sources">
+                        {% for source in sources %}
+                            <option value="{{ source.plugin.name }}">{{ source.plugin.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="selection-item">
+                    <label for="visualizers">Select visualizer:</label>
+                    <select id="visualizers">
+                        {% for visualizer in visualizers %}
+                            <option value="{{ visualizer.plugin.name }}">{{ visualizer.plugin.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+
+            </form>
+            <a class="center" href="{% url 'generated_graph' %}">
+                <button class="button_primary center" type="button">Generate</button>
+            
+            </a>
+
+        </div>
+        <div id="top_bar">
+
+            <div id="filter">
+                <input id="query" type="text" name="query" placeholder="Enter query"/>
+                <button class="button_primary" type="button">Filter</button>
+
 
             </div>
-
-        </form>
-        <a href=""></a>
-        <button class="button_primary center" type="button">Generate</button>
-
-    </div>
-    <div id="top_bar">
-
-        <div id="filter">
-            <input id="query" type="text" name="query" placeholder="Enter query"/>
-            <button class="button_primary" type="button">Filter</button>
-
 
         </div>
 
-    </div>
 
+        <div id="tree-view">
+            {% include 'tree_view.html' %}
+        </div>
 
-    <div id="tree-view">
-        {% include 'tree_view.html' %}
-    </div>
+        <div id="bird-view">
+            {% include 'bird_view.html' %}
+        </div>
 
-    <div id="bird-view">
-        {% include 'bird_view.html' %}
+        <style>
+            #graph {
+                align-items: center;
+            }
+        </style>
+        <div id="graph">
+            {% include 'main_view.html' %}
+        </div>
     </div>
-
-    <style>
-        #graph {
-            align-items: center;
-        }
-    </style>
-    <div id="graph">
-       {% include 'main_view.html' %}
-    </div>
-</div>
 
 {% endblock %}
