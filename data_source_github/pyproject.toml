@@ -3,14 +3,11 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "graph-explorer-twitter-source"
+name = "graph-explorer-github-source"
 authors = [
-    {name = "Aleksa Perovic"},
-    {name = "Danilo Cvijetic"},
-    {name = "Vladimir Cornenki"},
-    {name = "Nemanja Stjepanovic"}
+    {name = "Aleksa Perovic"}
 ]
-description = "Twitter data source  visualizer plugin for graph explorer"
+description = "GitHub data source visualizer plugin for graph explorer"
 requires-python = ">=3.7"
 dependencies = [
     'graph-explorer-api',
