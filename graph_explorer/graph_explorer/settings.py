@@ -57,6 +57,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, '..', 'simple_visualizer', 'src', 'plugin'),
+            os.path.join(BASE_DIR, '..', 'block_visualizer', 'src', 'plugin')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
