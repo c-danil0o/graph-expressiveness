@@ -1,0 +1,157 @@
+{% block complex_view %}
+<style>
+
+.node {
+  cursor: pointer;
+  color: #3182bd;
+}
+
+.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+.node-block {
+  stroke: #666;
+  fill: #fff;
+  pointer-events: all;
+}
+
+.node-block rect {
+  fill: lightgrey;
+  stroke: #3182bd;
+  stroke-width: 2px;
+}
+
+</style>
+<script>
+
+    function nodeClick(el){
+        console.log(el);
+      // alert("ID: "+ el.textContent);
+    }
+
+    var nodes = {{ nodes | safe }}
+    var links = {{ links | safe }}
+
+
+    var nodes_dict = nodes.reduce(function(acc, node) {
+        acc[node.node_id] = node;
+        node.data = {
+            'a' : Math.random(),
+            'b' : Math.random(),
+            'c' : Math.random(),
+            'd' : Math.random(),
+            'e' : Math.random(),
+            'f' : Math.random()
+        }
+        return acc;
+    }, {});
+
+    links.forEach(function(link) {
+        link.source = nodes_dict[link.source];
+        link.target = nodes_dict[link.target];
+    });
+
+    var width = 1000;
+    var height = 1000;
+
+    var force = d3.layout.force()
+        .size([width, height])
+        .nodes(d3.values(nodes))
+        .links(links)
+        .on("tick", tick)
+        .linkDistance(300)
+        .charge(-5000)
+        .start();
+
+    var drag = force.drag()
+    		.on("dragstart", dragstart)
+            .on("dragend", dragend);
+
+    var zoom = d3.behavior.zoom()
+        .scaleExtent([0.01, 10])
+        .on("zoom", zoomed);
+
+    var svg = d3.select('svg')
+        .attr('width', width)
+        .attr('height', height)
+        .call(zoom);
+
+    var container = svg.append('g');
+
+    var link = container.selectAll('.link')
+        .data(links)
+        .enter().append('line')
+        .attr('class', 'link');
+
+    var node = container.selectAll('.node')
+        .data(force.nodes())
+        .enter().append('g')
+        .attr('class', 'node-block')
+        .attr('id', function(d) { return d.name; })
+        .on('click', function(d) {
+            nodeClick(this);
+        })
+        .call(drag);
+
+    node.append('rect')
+        .attr('width', function(d) { return Math.max(50, d.node_id.length * 10); })
+        .attr('height', function(d) { return 40 + Object.keys(d.data).length * 15; })
+        .attr('rx', 5)
+        .attr('ry', 5)
+        .style('pointer-events', 'all');
+
+    node.append('text')
+        .attr('x', 10)
+        .attr('y', 20)
+        .text(function(d) { return "ID: " + d.node_id; });
+
+    node.append('line')
+        .attr('x1', 0)
+        .attr('y1', 25)
+        .attr('x2', function(d) { return Math.max(50, d.node_id.length * 10); })
+        .attr('y2', 25)
+        .style('stroke', '#3182bd')
+        .style('stroke-width', '3px');
+
+    node.each(function(d) {
+        var group = d3.select(this);
+
+        var keyValuePairs = group.selectAll('.key-value-pair')
+            .data(d3.entries(d.data))
+            .enter().append('text')
+            .attr('class', 'key-value-pair')
+            .attr('x', 10)
+            .attr('y', function(_, i) { return 40 + i * 15; })
+            .text(function(entry) { return entry.key + ': ' + entry.value; });
+    });
+
+    function tick(e) {
+        node.attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")";})
+            .call(force.drag);
+
+        link.attr('x1', function(d) { return d.source.x; })
+            .attr('y1', function(d) { return d.source.y; })
+            .attr('x2', function(d) { return d.target.x; })
+            .attr('y2', function(d) { return d.target.y; });
+    }
+
+    function zoomed() {
+        container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    }
+
+    function dragstart(d) {
+        d3.event.sourceEvent.stopPropagation();
+        d3.select(this).classed("fixed", d.fixed = true);
+    }
+
+    function dragend(d) {
+        d3.event.sourceEvent.stopPropagation();
+        d3.select(this).classed("fixed", d.fixed = false);
+    }
+
+
+</script>
+{% endblock %}
