@@ -1,16 +1,32 @@
-# This is a sample Python script.
+from urllib import request
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from django.shortcuts import render
+from django.template.loader import render_to_string
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from api.src.services.visualizer_plugin import VisualizerPlugin
+from api.src.types.graph import Graph, Node, Edge
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+class Visualizer(VisualizerPlugin):
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    def identifier(self):
+        return "graph-explorer-block-visualizer"
+
+    def name(self):
+        return "block-visualizer"
+
+    def show(self, input_graph):
+
+        graph = input_graph
+
+        nodes = [{"node_id": node.node_id, "data": node.data} for node in graph.nodes]
+
+        edges = [{"source": edge.source.node_id, "target": edge.destination.node_id} for edge in graph.edges]
+
+        context = {
+            "nodes": nodes,
+            "links": edges,
+        }
+
+        return render_to_string('block_visualization.html', context)
+

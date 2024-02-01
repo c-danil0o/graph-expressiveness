@@ -9,7 +9,7 @@ source_plugins: list[str] = []
 visualizer_plugins: list[str] = []
 
 
-def load_plugins():
+def init():
     for entry_point in source_entry_points:
         plugin = entry_point.load()
         source_plugins.append(plugin.DataSource())
