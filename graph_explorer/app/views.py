@@ -14,8 +14,14 @@ loader = Loader()
 loader.init()
 main_view = MainView()
 
+
 def index(request):
     return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers})
 
+
 def generate(request):
-    return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers, "visualization_html": main_view.generate_main_view(0, 0)})
+    visualizer_id = int(request.POST.get("visualizers"))
+    source_id = int(request.POST.get("sources"))
+    print(visualizer_id, source_id)
+    return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
+                                          "visualization_html": main_view.generate_main_view(source_id, visualizer_id)})

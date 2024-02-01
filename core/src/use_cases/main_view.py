@@ -1,6 +1,6 @@
 from core.src.use_cases.loader import Loader
 
-a = {'blocks_num': 10, 'graph_name': 'asd', 'latest_block': -1}
+a = {'blocks_num': 10, 'graph_name': 'asd', 'latest_block': -1, 'depth': 2}
 
 
 class MainView(object):

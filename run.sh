@@ -21,7 +21,6 @@ run_server() {
 lay_egs ./block_visualizer
 lay_egs ./simple_visualizer
 lay_egs ./data_source_ethereum
-lay_egs ./data_source_twitter
-lay_egs ./core
+lay_egs ./data_source_github
 
 run_server graph_explorer

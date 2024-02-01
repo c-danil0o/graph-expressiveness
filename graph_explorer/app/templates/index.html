@@ -7,30 +7,29 @@
             <span>Graph Visualizer</span>
         </div>
         <div id="select">
-            <form id="bar_form">
+            <form id="bar_form" method="post" action="{% url 'generated_graph' %}">
                 <div class="selection-item">
                     <label for="sources">Select source:</label>
-                    <select id="sources">
+                    <select id="sources" name="sources">
                         {% for source in sources %}
-                            <option value="{{ source.plugin.name }}">{{ source.plugin.name }}</option>
+                            <option value="{{ source.plugin_id }}">{{ source.plugin.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="selection-item">
                     <label for="visualizers">Select visualizer:</label>
-                    <select id="visualizers">
+                    <select id="visualizers" name="visualizers">
                         {% for visualizer in visualizers %}
-                            <option value="{{ visualizer.plugin.name }}">{{ visualizer.plugin.name }}</option>
+                            <option value="{{ visualizer.plugin_id }}">{{ visualizer.plugin.name }}</option>
                         {% endfor %}
                     </select>
 
                 </div>
 
+                <button class="button_primary center" type="submit">Generate</button>
+
             </form>
-            <a class="center" href="{% url 'generated_graph' %}">
-                <button class="button_primary center" type="button">Generate</button>
-            
-            </a>
+
 
         </div>
         <div id="top_bar">

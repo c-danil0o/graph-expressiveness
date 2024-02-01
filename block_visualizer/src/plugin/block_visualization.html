@@ -38,14 +38,6 @@
 
     var nodes_dict = nodes.reduce(function(acc, node) {
         acc[node.node_id] = node;
-        node.data = {
-            'a' : Math.random(),
-            'b' : Math.random(),
-            'c' : Math.random(),
-            'd' : Math.random(),
-            'e' : Math.random(),
-            'f' : Math.random()
-        }
         return acc;
     }, {});
 
@@ -97,7 +89,7 @@
         .call(drag);
 
     node.append('rect')
-        .attr('width', function(d) { return Math.max(50, d.node_id.length * 10); })
+        .attr('width', function(d) { return Math.max((String(d.data['to']).length + 3) * 10, (String(d.data['from']).length + 5) * 10); })
         .attr('height', function(d) { return 40 + Object.keys(d.data).length * 15; })
         .attr('rx', 5)
         .attr('ry', 5)
