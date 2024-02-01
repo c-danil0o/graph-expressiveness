@@ -43,6 +43,11 @@ class Graph:
         if node not in self.nodes:
             self.nodes.append(node)
 
+    def get_node(self, node_id):
+        for node in self.nodes:
+            if node.node_id == node_id:
+                return node
+
     def add_edge(self, edge: Edge):
         self.edges.append(edge)
 
