@@ -28,6 +28,7 @@ class Loader:
         i = 0
         for entry_point in self.visualizer_entry_points:
             plugin = entry_point.load()
+            print(plugin.Visualizer().name())
             self.visualizers.append(Plugin(plugin.Visualizer(), i))
             i += 1
 

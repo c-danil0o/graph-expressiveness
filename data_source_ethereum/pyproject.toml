@@ -14,5 +14,5 @@ version = "0.1"
 [project.scripts]
 
 [project.entry-points."graph.sources"]
-load = "plugin.data_source"
+load = "plugin.eth_data_source"
 #identifier = "plugin.data_source.EthereumDatasource:identifier"

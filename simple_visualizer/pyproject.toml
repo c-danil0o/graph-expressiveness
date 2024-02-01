@@ -14,4 +14,4 @@ version = "0.1"
 [project.scripts]
 
 [project.entry-points."graph.visualizers"]
-load = "plugin.visualizer"
+load = "plugin.simple_visualizer"

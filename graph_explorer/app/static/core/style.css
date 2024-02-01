@@ -94,9 +94,6 @@ select {
     width: fit-content;
 }
 
-.center {
-    margin: 0 auto;
-}
 
 #tree-view {
     display: flex;

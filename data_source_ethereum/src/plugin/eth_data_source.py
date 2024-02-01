@@ -41,9 +41,7 @@ def load_from_blocks(blocks_num: int, graph_name: str, latest_block: int = -1) -
                 node.data['connected'] = 1
                 node2.data['connected'] = 1
                 new_edge: Edge = Edge(node.data['from'], {}, node, node2, True)
-                #      root_edge = Edge(1, {}, root, node, True)
                 _graph.add_edge(new_edge)
-            #   _graph.add_edge(root_edge)
     _graph.nodes = list(filterfalse(lambda x: not x.data['connected'], _graph.nodes))
     visited: list[Node] = []
     for node in _graph.nodes:
