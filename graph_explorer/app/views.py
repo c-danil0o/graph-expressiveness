@@ -25,3 +25,10 @@ def generate(request):
     print(visualizer_id, source_id)
     return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                           "visualization_html": main_view.generate_main_view(source_id, visualizer_id)})
+
+
+def search(request):
+    search_text: str = str(request.POST.get("query"))
+    print(search_text)
+    return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
+                                          "visualization_html": main_view.generate_from_query(search_text)})

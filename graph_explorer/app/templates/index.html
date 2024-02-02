@@ -34,12 +34,10 @@
         </div>
         <div id="top_bar">
 
-            <div id="filter">
+            <form id="filter" method="post" action="{% url 'search_graph' %}">
                 <input id="query" type="text" name="query" placeholder="Enter query"/>
-                <button class="button_primary" type="button">Filter</button>
-
-
-            </div>
+                <button class="button_primary" type="submit">Filter</button>
+            </form>
 
         </div>
 

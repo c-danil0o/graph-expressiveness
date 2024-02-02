@@ -44,6 +44,9 @@ def populate_graph(depth: int):
     print('qm')
 
     if depth == 0:
+        last_users.clear()
+        new_users.clear()
+        user_info_cache.clear()
         return _graph
     else:
         depth = depth-1
