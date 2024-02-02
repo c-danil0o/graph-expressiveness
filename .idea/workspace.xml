@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f8e750c-f22a-4bb7-8778-9cdeea2fc088" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data_source_github/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_source_github/src/plugin/github_data_source.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/Graph Explorer.run.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/graph_exp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/graph_exp.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/types/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/types/graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/models/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/models/tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/use_cases/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/use_cases/main_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/main_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_twitter/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_twitter/.idea/data_source_twitter.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_twitter/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_twitter/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_twitter/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_twitter/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_twitter/pyproject.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_twitter/src/plugin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_source_github/src/plugin/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_twitter/src/plugin/data_source.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/use_cases/tree_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/tree_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_source_ethereum/src/plugin/eth_data_source.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_source_ethereum/src/plugin/eth_data_source.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,14 +37,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Django Server.Graph Explorer.executor": "Debug",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging fix/load-plugins",
+    "git-widget-placeholder": "feature/tree",
+    "last_opened_file_path": "/home/dc/Code/SOK/graph_exp/graph_explorer/graph_explorer/settings.py",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.django.DjangoModulesConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -69,6 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1706805442219</updated>
       <workItem from="1706805444800" duration="4022000" />
+      <workItem from="1706880892373" duration="4587000" />
     </task>
     <servers />
   </component>
@@ -77,5 +77,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/core/src/use_cases/tree_view.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

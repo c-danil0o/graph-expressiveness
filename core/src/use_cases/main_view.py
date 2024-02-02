@@ -1,7 +1,5 @@
 from core.src.use_cases.loader import Loader
 
-a = {'blocks_num': 10, 'graph_name': 'asd', 'latest_block': -1, 'depth': 2}
-
 
 class MainView(object):
     def __init__(self):
@@ -10,4 +8,4 @@ class MainView(object):
         self.visualizers = self.loader.visualizers
 
     def generate_main_view(self, source_plugin_id: int, visualizer_plugin_id: int):
-        return self.visualizers[visualizer_plugin_id].plugin.show(self.sources[source_plugin_id].plugin.load(a))
+        return self.visualizers[visualizer_plugin_id].plugin.show(self.loader.get_loaded_graph(source_plugin_id))
