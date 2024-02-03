@@ -55,7 +55,7 @@ select {
 
 #query {
     height: 33px;
-    width: 80%;
+    width: 60%;
     border-radius: 150px;
     border-style: solid;
     border-color: #46494B;
@@ -98,14 +98,16 @@ select {
 
 #clear_button{
     align-self: center;
-    background-color: #46494B;
-    color: white;
-    font-weight: 700;
+    background-color: #cccccc;
+    color: #000000;
+    font-weight: 500;
     padding: 10px 40px;
     cursor: pointer;
     border: none;
     border-radius: 40px;
+    text-decoration: none;
     width: fit-content;
+    font-family: Consolas, sans-serif;
 }
 
 #tree-view {
