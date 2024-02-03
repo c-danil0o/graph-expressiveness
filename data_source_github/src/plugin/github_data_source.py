@@ -21,7 +21,8 @@ def get_user_info(person):
         "login": name,
         "email": str(person.email),
         "name": str(person.name),
-        "bio": str(person.bio)
+        "bio": str(person.bio),
+        "repos": int(person.public_repos)
     }
 
     user_info_cache[name] = user_info
@@ -29,12 +30,15 @@ def get_user_info(person):
 
 
 def fetch_user_info_parallel(following_user, node):
+    if _graph.get_node_count()>200:
+        return
     user_info = get_user_info(following_user)
     new_users.append(following_user)
     new_node = Node(user_info["login"], {
         "email": user_info["email"],
         "name": user_info["name"],
-        "bio": user_info["bio"]
+        "bio": user_info["bio"],
+        "repos": user_info["repos"]
     })
     _graph.add_node(new_node)
     _graph.add_edge(Edge("following", {}, node, new_node, False))
@@ -70,7 +74,7 @@ def load_graph(graph_name: str, depth: int) -> Graph:
     login = Github(access_token)
     user = login.get_user()
     _graph.name = graph_name
-    root: Node = Node(user.login, {"email": str(user.email), "name": str(user.name), "bio": str(user.bio)})
+    root: Node = Node(user.login, {"email": str(user.email), "name": str(user.name), "bio": str(user.bio), "repos": int(user.public_repos)})
     _graph.set_root(root)
     _graph.add_node(root)
     last_users.append(user)

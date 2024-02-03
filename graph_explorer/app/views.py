@@ -1,3 +1,5 @@
+import re
+
 from django.shortcuts import render
 import os
 import sys
@@ -30,5 +32,12 @@ def generate(request):
 def search(request):
     search_text: str = str(request.POST.get("query"))
     print(search_text)
-    return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
-                                          "visualization_html": main_view.generate_from_query(search_text)})
+    pattern = r'^(\w+)\s*(==|>|>=|<|<=|!=)\s*(.+)$'
+    match = re.match(pattern, search_text)
+    if match:
+        print("filter")
+        return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
+                                              "visualization_html": main_view.generate_from_filter_query(match.group(1), match.group(2), match.group(3))})
+    else:
+        return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
+                                              "visualization_html": main_view.generate_from_search_query(search_text)})
