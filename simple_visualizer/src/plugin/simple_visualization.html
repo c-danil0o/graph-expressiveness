@@ -46,7 +46,7 @@
         .charge(-5000)
         .start();
 
-    var svg = d3.select('svg');
+    var svg = d3.select('#visualization');
     var link = svg.selectAll('.link')
         .data(links)
         .enter().append('line')
