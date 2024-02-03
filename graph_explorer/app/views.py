@@ -41,3 +41,8 @@ def search(request):
     else:
         return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                               "visualization_html": main_view.generate_from_search_query(search_text)})
+
+
+def clear_filters(request):
+    return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
+                                          "visualization_html": main_view.clear_filters()})

@@ -1,3 +1,5 @@
+import copy
+
 from core.src.use_cases.loader import Loader
 from api.src.types.graph import Graph, Node, Edge
 from core.src.models.plugin import Plugin
@@ -50,12 +52,14 @@ class MainView(object):
         self.loader = Loader()
         self.sources = self.loader.sources
         self.visualizers = self.loader.visualizers
+        self.full_graph: Graph = None
         self.current_graph: Graph = None
         self.current_visualizer_plugin_id: int = 0
         self.current_source_plugin_id: int = 0
 
     def generate_main_view(self, source_plugin_id: int, visualizer_plugin_id: int):
         self.current_graph = self.sources[source_plugin_id].plugin.load(a)
+        self.full_graph = copy.deepcopy(self.current_graph)
         self.current_source_plugin_id = source_plugin_id
         self.current_visualizer_plugin_id = visualizer_plugin_id
         return self.visualizers[visualizer_plugin_id].plugin.show(self.current_graph)
@@ -81,3 +85,7 @@ class MainView(object):
                 new_graph.add_edge(edge)
         self.current_graph = new_graph
         return self.visualizers[self.current_visualizer_plugin_id].plugin.show(new_graph)
+
+    def clear_filters(self):
+        self.current_graph = copy.deepcopy(self.full_graph)
+        return self.visualizers[self.current_visualizer_plugin_id].plugin.show(self.full_graph)

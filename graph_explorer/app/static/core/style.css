@@ -28,6 +28,8 @@ body {
     z-index: 1;
 }
 
+
+
 #top_bar {
     color: #f2f2f2;
     grid-column-start: 2;
@@ -94,6 +96,17 @@ select {
     width: fit-content;
 }
 
+#clear_button{
+    align-self: center;
+    background-color: #46494B;
+    color: white;
+    font-weight: 700;
+    padding: 10px 40px;
+    cursor: pointer;
+    border: none;
+    border-radius: 40px;
+    width: fit-content;
+}
 
 #tree-view {
     display: flex;
@@ -131,3 +144,5 @@ select {
     background-color: rgba(200, 200, 200, 0.87);
     z-index: 1;
 }
+
+

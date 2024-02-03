@@ -37,6 +37,7 @@
             <form id="filter" method="post" action="{% url 'search_graph' %}">
                 <input id="query" type="text" name="query" placeholder="Enter query"/>
                 <button class="button_primary" type="submit">Filter</button>
+                <a href="{% url 'clear_filters' %}" id="clear_button">Clear filters</a>
             </form>
 
         </div>
