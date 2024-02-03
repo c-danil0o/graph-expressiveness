@@ -65,6 +65,8 @@ class MainView(object):
         return self.visualizers[visualizer_plugin_id].plugin.show(self.current_graph)
 
     def generate_from_search_query(self, search_text: str):
+        if self.current_graph is None:
+            return ''
         new_graph: Graph = Graph('searched graph', None, [], [])
         for node in self.current_graph.nodes:
             if is_node_valid_search(node, search_text):
@@ -76,6 +78,8 @@ class MainView(object):
         return self.visualizers[self.current_visualizer_plugin_id].plugin.show(new_graph)
 
     def generate_from_filter_query(self, attribute: str, comparator: str, value: str):
+        if self.current_graph is None:
+            return ''
         new_graph: Graph = Graph('filtered graph', None, [], [])
         for node in self.current_graph.nodes:
             if is_node_valid_filter(node, attribute, comparator, value):
@@ -87,5 +91,7 @@ class MainView(object):
         return self.visualizers[self.current_visualizer_plugin_id].plugin.show(new_graph)
 
     def clear_filters(self):
+        if self.full_graph is None:
+            return ''
         self.current_graph = copy.deepcopy(self.full_graph)
         return self.visualizers[self.current_visualizer_plugin_id].plugin.show(self.full_graph)
