@@ -24,8 +24,8 @@ def index(request):
 def generate(request):
     visualizer_id = int(request.POST.get("visualizers"))
     source_id = int(request.POST.get("sources"))
+    print(visualizer_id, source_id)
     vis = main_view.generate_main_view(source_id, visualizer_id)
     tree_view = TreeView(loader, source_id)
-    tree_view.generate_tree_view()
     return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
-                                          "visualization_html": vis})
+                                          "visualization_html": vis, "tree_view_html": tree_view.generate_tree_view()})

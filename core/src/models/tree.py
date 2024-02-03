@@ -1,10 +1,12 @@
+import json
+
 from api.src.types.graph import Node, Graph
 
 
 class TreeNode(Node):
     def __init__(self, node_id: int, data: dict, children: list):
         super().__init__(node_id, data)
-        self.children = children
+        self.children: list[TreeNode] = children
 
 
 class Tree(object):
@@ -20,3 +22,17 @@ class Tree(object):
                 new_node = TreeNode(neighbour.node_id, neighbour.data, [])
                 tree_node.children.append(new_node)
                 self.dfs_traverse(new_node, neighbour, graph, visited)
+
+    def get_json(self):
+        tree = {"name": self.root.node_id, "data": self.root.data, "children": []}
+        self.dfs_dict(tree, self.root)
+        return tree
+       #  with open("graph_explorer/app/static/tree.json", "w") as output:
+       # ## with open("tree.json", "w") as output:
+       #      json.dump(tree, output)
+
+    def dfs_dict(self, tree: dict, node: TreeNode):
+        for child in node.children:
+            dict_node = {"name": child.node_id, "data": child.data, "children": []}
+            tree["children"].append(dict_node)
+            self.dfs_dict(dict_node, child)

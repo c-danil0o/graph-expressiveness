@@ -13,8 +13,7 @@ class Loader:
     sources: list[Plugin] = []
     visualizers: list[Plugin] = []
     loaded_graphs: dict[int, Graph] = {}
-    a = {'blocks_num': 2, 'graph_name': 'asd', 'latest_block': -1, 'depth': 2}
-
+    a = {'blocks_num': 12, 'graph_name': 'asd', 'latest_block': -1, 'depth': 2}
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
