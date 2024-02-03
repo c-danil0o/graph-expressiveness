@@ -46,27 +46,11 @@ def load_from_blocks(blocks_num: int, graph_name: str, latest_block: int = -1) -
     visited: list[Node] = []
     for node in _graph.nodes:
         if node != root and node not in visited:
-            dfs_undirected(_graph, visited, node)
+            _graph.dfs_undirected(visited, node)
             root_edge = Edge(1, {}, root, visited[-1], True)
             _graph.add_edge(root_edge)
     return _graph
 
-
-def get_neighbours_undirected(graph: Graph, node: Node):
-    neighbours = []
-    for edge in graph.edges:
-        if node == edge.source:
-            neighbours.append(edge.destination)
-        if node == edge.destination:
-            neighbours.append(edge.source)
-    return neighbours
-
-
-def dfs_undirected(graph: Graph, visited: list[Node], node: Node):  # function for dfs
-    if node not in visited:
-        visited.append(node)
-        for neighbour in get_neighbours_undirected(graph, node):
-            dfs_undirected(graph, visited, neighbour)
 
 
 class DataSource(SourcePlugin):

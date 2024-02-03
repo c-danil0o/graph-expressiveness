@@ -4,8 +4,6 @@ from core.src.use_cases.loader import Loader
 from api.src.types.graph import Graph, Node, Edge
 from core.src.models.plugin import Plugin
 
-a = {'blocks_num': 10, 'graph_name': 'asd', 'latest_block': -1, 'depth': 2}
-
 
 def is_node_valid_search(node: Node, search_text: str) -> bool:
     node_data = node.data
@@ -58,7 +56,7 @@ class MainView(object):
         self.current_source_plugin_id: int = 0
 
     def generate_main_view(self, source_plugin_id: int, visualizer_plugin_id: int):
-        self.current_graph = self.sources[source_plugin_id].plugin.load(a)
+        self.current_graph = self.loader.get_loaded_graph(source_plugin_id)
         self.full_graph = copy.deepcopy(self.current_graph)
         self.current_source_plugin_id = source_plugin_id
         self.current_visualizer_plugin_id = visualizer_plugin_id
@@ -94,4 +92,6 @@ class MainView(object):
         if self.full_graph is None:
             return ''
         self.current_graph = copy.deepcopy(self.full_graph)
+        self.loader.set_loaded_graph(self.current_graph, self.current_source_plugin_id)
         return self.visualizers[self.current_visualizer_plugin_id].plugin.show(self.full_graph)
+

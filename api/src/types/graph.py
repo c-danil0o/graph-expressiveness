@@ -88,6 +88,18 @@ class Graph:
             for neighbour in self.get_neighbours(node):
                 self.dfs(visited, neighbour)
 
+    def get_neighbours_undirected(self, node: Node):
+        neighbours = []
+        for edge in self.edges:
+            if node == edge.source:
+                neighbours.append(edge.destination)
+            if node == edge.destination:
+                neighbours.append(edge.source)
+        return neighbours
 
-
+    def dfs_undirected(self, visited: list[Node], node: Node):  # function for dfs
+        if node not in visited:
+            visited.append(node)
+            for neighbour in self.get_neighbours_undirected(node):
+                self.dfs_undirected(visited, neighbour)
 
