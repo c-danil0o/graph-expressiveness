@@ -50,3 +50,6 @@ class Loader:
             return self.loaded_graphs[plugin]
         else:
             return self.load_graph(plugin)
+
+    def set_loaded_graph(self, graph: Graph, plugin: int):
+        self.loaded_graphs[plugin] = graph

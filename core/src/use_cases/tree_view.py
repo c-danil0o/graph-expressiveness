@@ -6,17 +6,15 @@ from core.src.use_cases.loader import Loader
 
 
 class TreeView(object):
-    def __init__(self, loader: Loader, source_plugin_id: int):
-        self.loader = loader
-        self.graph = loader.get_loaded_graph(source_plugin_id)
+    def __init__(self, graph: Graph):
+        self.graph = graph
         self.tree = None
 
     def generate_tree_view(self) -> str:
+        if self.graph.get_node_count() <= 0:
+            return ''
         self.tree = Tree(self.graph.root, self.graph)
         context = {
             "input_tree": self.tree.get_json(),
         }
         return render_to_string('tree_view_template.html', context)
-
-
-

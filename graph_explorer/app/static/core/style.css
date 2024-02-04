@@ -28,6 +28,8 @@ body {
     z-index: 1;
 }
 
+
+
 #top_bar {
     color: #f2f2f2;
     grid-column-start: 2;
@@ -53,7 +55,7 @@ select {
 
 #query {
     height: 33px;
-    width: 80%;
+    width: 60%;
     border-radius: 150px;
     border-style: solid;
     border-color: #46494B;
@@ -94,6 +96,19 @@ select {
     width: fit-content;
 }
 
+#clear_button{
+    align-self: center;
+    background-color: #cccccc;
+    color: #000000;
+    font-weight: 500;
+    padding: 10px 40px;
+    cursor: pointer;
+    border: none;
+    border-radius: 40px;
+    text-decoration: none;
+    width: fit-content;
+    font-family: Consolas, sans-serif;
+}
 
 #tree-view {
     display: flex;
@@ -131,3 +146,5 @@ select {
     background-color: rgba(200, 200, 200, 0.87);
     z-index: 1;
 }
+
+
