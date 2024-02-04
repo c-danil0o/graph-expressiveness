@@ -4,8 +4,9 @@ from concurrent.futures import ThreadPoolExecutor
 from github import Github
 
 from api.src.types.graph import Graph, Node, Edge
+from api.src.types.param import Param
 
-_graph = Graph('', None, [], [])
+_graph = Graph('Githun', None, [], [])
 access_token = "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"
 user_info_cache = {}
 
@@ -82,6 +83,9 @@ def load_graph(graph_name: str, depth: int) -> Graph:
 
 
 class DataSource(SourcePlugin):
+    def params(self) -> list[Param]:
+        return [Param("Graph name", "graph_name", str), Param("Depth", "depth", int)]
+
     def load(self, config: dict):
         return load_graph(config['graph_name'], config["depth"])
 

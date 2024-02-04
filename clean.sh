@@ -15,8 +15,7 @@ remove_eggs() {
 remove_eggs block_visualizer
 remove_eggs simple_visualizer
 remove_eggs data_source_ethereum
-remove_eggs data_source_twitter
-remove_eggs core
+remove_eggs data_source_github
 
 
 # remove db

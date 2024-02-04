@@ -7,6 +7,7 @@ from api.src.services.source_plugin import SourcePlugin
 from web3 import Web3
 
 from api.src.types.graph import Graph, Node, Edge
+from api.src.types.param import Param
 
 alchemy_url = "https://eth-mainnet.g.alchemy.com/v2/b4NTkO8I0PoGbjnrRkR-p0JflJRWY-6v"
 w3 = Web3(Web3.HTTPProvider(alchemy_url))
@@ -52,8 +53,13 @@ def load_from_blocks(blocks_num: int, graph_name: str, latest_block: int = -1) -
     return _graph
 
 
-
 class DataSource(SourcePlugin):
+    def params(self) -> list[Param]:
+        return [Param("Graph name", "graph_name", str), Param("Number of blocks", "blocks_num", int),
+                Param("Last block(-1 for "
+                      "default)",
+                      "latest_block", int)]
+
     def load(self, config: dict):
         return load_from_blocks(config['blocks_num'], config['graph_name'], config['latest_block'])
 

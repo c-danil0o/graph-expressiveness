@@ -59,7 +59,7 @@ select {
     border-color: #46494B;
     border-width: 1px;
     padding-left: 20px;
-    margin-right: -50px;
+    margin-right: -150px;
 }
 
 #query:focus {
@@ -81,6 +81,10 @@ select {
     justify-content: space-between;
     font-size: 14px;
 }
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
 
 .button_primary {
     align-self: center;
@@ -88,6 +92,8 @@ select {
     color: white;
     font-weight: 700;
     padding: 10px 40px;
+    text-decoration: none;
+
     cursor: pointer;
     border: none;
     border-radius: 40px;
@@ -130,4 +136,49 @@ select {
     border-radius: 30px;
     background-color: rgba(200, 200, 200, 0.87);
     z-index: 1;
+}
+#clear_button{
+    align-self: center;
+    color: #999999;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 40px;
+    text-decoration: none;
+    width: fit-content;
+    font-size: 12px;
+    font-family: Consolas, sans-serif;
+}
+.settings{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.setting {
+    display: flex;
+    justify-content: space-between;
+}
+.err_msg{
+    color: #cd0000;
+    text-align: center;
+}
+.config {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
 }

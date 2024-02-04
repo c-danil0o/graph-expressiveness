@@ -19,6 +19,7 @@ class Tree(object):
         visited: list[Node] = []
         for node in self.graph.nodes:
             if node not in visited:
+                visited.append(node)
                 new_node: TreeNode = TreeNode(node.node_id, node.data, [])
                 self.root.children.append(new_node)
                 self.dfs_traverse(new_node, node, self.graph, visited)
