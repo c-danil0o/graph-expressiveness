@@ -69,10 +69,7 @@ class MainView(object):
         for node in self.current_graph.nodes:
             if is_node_valid_search(node, search_text):
                 new_graph.add_node(node)
-        for edge in self.current_graph.edges:
-            if edge.source in new_graph.nodes and edge.destination in new_graph.nodes:
-                new_graph.add_edge(edge)
-        self.current_graph = new_graph
+        self.add_edges(new_graph)
         return self.visualizers[self.current_visualizer_plugin_id].plugin.show(new_graph)
 
     def generate_from_filter_query(self, attribute: str, comparator: str, value: str):
@@ -82,10 +79,7 @@ class MainView(object):
         for node in self.current_graph.nodes:
             if is_node_valid_filter(node, attribute, comparator, value):
                 new_graph.add_node(node)
-        for edge in self.current_graph.edges:
-            if edge.source in new_graph.nodes and edge.destination in new_graph.nodes:
-                new_graph.add_edge(edge)
-        self.current_graph = new_graph
+        self.add_edges(new_graph)
         return self.visualizers[self.current_visualizer_plugin_id].plugin.show(new_graph)
 
     def clear_filters(self):
@@ -94,4 +88,13 @@ class MainView(object):
         self.current_graph = copy.deepcopy(self.full_graph)
         self.loader.set_loaded_graph(self.current_graph, self.current_source_plugin_id)
         return self.visualizers[self.current_visualizer_plugin_id].plugin.show(self.full_graph)
+
+    def add_edges(self, new_graph: Graph):
+        if new_graph.get_node_count() > 0:
+            new_graph.set_root(new_graph.nodes[0])
+            for edge in self.current_graph.edges:
+                if edge.source in new_graph.nodes and edge.destination in new_graph.nodes:
+                    new_graph.add_edge(edge)
+        self.current_graph = new_graph
+        self.loader.set_loaded_graph(self.current_graph, self.current_source_plugin_id)
 

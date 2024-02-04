@@ -26,6 +26,7 @@ def index(request):
 
 
 def generate(request):
+    global visualizer_id, source_id
     visualizer_id = int(request.POST.get("visualizers"))
     source_id = int(request.POST.get("sources"))
     print(visualizer_id, source_id)
@@ -41,17 +42,20 @@ def search(request):
     print(search_text)
     pattern = r'^(\w+)\s*(==|>|>=|<|<=|!=)\s*(.+)$'
     match = re.match(pattern, search_text)
-    tree_view = TreeView(loader.get_loaded_graph(source_id))
     if match:
-        print("filter")
+        main_view_html = main_view.generate_from_filter_query(match.group(1), match.group(2), match.group(3))
+        tree_view = TreeView(loader.get_loaded_graph(source_id))
         return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,"tree_view_html": tree_view.generate_tree_view(),
-                                              "visualization_html": main_view.generate_from_filter_query(match.group(1), match.group(2), match.group(3))})
+                                              "visualization_html": main_view_html})
     else:
+        main_view_html = main_view.generate_from_search_query(search_text)
+        tree_view = TreeView(loader.get_loaded_graph(source_id))
         return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,"tree_view_html": tree_view.generate_tree_view(),
-                                              "visualization_html": main_view.generate_from_search_query(search_text)})
+                                              "visualization_html": main_view_html})
 
 
 def clear_filters(request):
+    main_view_html = main_view.clear_filters()
     tree_view = TreeView(loader.get_loaded_graph(source_id))
     return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
-                                          "visualization_html": main_view.clear_filters(), "tree_view_html": tree_view.generate_tree_view()})
+                                          "visualization_html": main_view_html, "tree_view_html": tree_view.generate_tree_view()})
