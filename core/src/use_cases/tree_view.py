@@ -13,7 +13,7 @@ class TreeView(object):
     def generate_tree_view(self) -> str:
         if self.graph.get_node_count() <= 0:
             return ''
-        self.tree = Tree(self.graph.root, self.graph)
+        self.tree = Tree(self.graph)
         context = {
             "input_tree": self.tree.get_json(),
         }

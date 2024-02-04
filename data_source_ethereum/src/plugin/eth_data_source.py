@@ -23,9 +23,9 @@ def load_from_blocks(blocks_num: int, graph_name: str, latest_block: int = -1) -
     print(w3.is_connected())
     _graph = Graph(graph_name, None, [], [])
     blocks = [w3.eth.get_block(block, True) for block in range(start_block_number, latest_block_number)]
-    root: Node = Node(0, {'connected': 1})
-    _graph.add_node(root)
-    _graph.set_root(root)
+    # root: Node = Node(0, {'connected': 1})
+    # _graph.add_node(root)
+    # _graph.set_root(root)
     for block in blocks:
         for transaction in block['transactions']:
             transaction_node: Node = Node(int.from_bytes(transaction['hash'], byteorder='big'),
@@ -37,18 +37,18 @@ def load_from_blocks(blocks_num: int, graph_name: str, latest_block: int = -1) -
             _graph.add_node(transaction_node)
     for node in _graph.nodes:
         for node2 in _graph.nodes:
-            if node != root and node2 != root and node.data['from'] == node2.data['to'] and node != node2:
+            if node.data['from'] == node2.data['to'] and node != node2:
                 node.data['connected'] = 1
                 node2.data['connected'] = 1
                 new_edge: Edge = Edge(node.data['from'], {}, node, node2, True)
                 _graph.add_edge(new_edge)
     _graph.nodes = list(filterfalse(lambda x: not x.data['connected'], _graph.nodes))
-    visited: list[Node] = []
-    for node in _graph.nodes:
-        if node != root and node not in visited:
-            _graph.dfs_undirected(visited, node)
-            root_edge = Edge(1, {}, root, visited[-1], True)
-            _graph.add_edge(root_edge)
+    # visited: list[Node] = []
+    # for node in _graph.nodes:
+    #     if node != root and node not in visited:
+    #         _graph.dfs_undirected(visited, node)
+    #         root_edge = Edge(1, {}, root, visited[-1], True)
+    #         _graph.add_edge(root_edge)
     return _graph
 
 
