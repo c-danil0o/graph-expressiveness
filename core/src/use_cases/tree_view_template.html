@@ -38,7 +38,7 @@
         function chart(data) {
             let margin = {top: 50, right: 40, bottom: 30, left: 20},
                 height = 600
-            barHeight = Object.keys(data.children[1].data).length * 33
+            barHeight = Object.keys(data.children[0].data).length * 33
             let i = 0,
                 duration = 300,
                 root;
@@ -55,7 +55,14 @@
             root = d3.hierarchy(data);
             root.x0 = 0;
             root.y0 = 0;
+             root.eachAfter((n) => {
+                n._children = n.children
+                n.children = null
+            })
             update(root);
+            console.log(root);
+
+
 
 
             function update(source) {
@@ -159,6 +166,8 @@
                     d.x0 = d.x;
                     d.y0 = d.y;
                 });
+
+
             }
 
             // Toggle children on click.

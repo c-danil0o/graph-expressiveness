@@ -10,10 +10,18 @@ class TreeNode(Node):
 
 
 class Tree(object):
-    def __init__(self, root: Node, graph: Graph):
-        self.root = TreeNode(root.node_id, root.data, [])
-        visited: list[Node] = [root]
-        self.dfs_traverse(self.root, root, graph, visited)
+    def __init__(self, graph: Graph):
+        self.root = TreeNode(0, {"graph_name": graph.name, "nodes": len(graph.nodes), "edges": len(graph.edges)}, [])
+        self.graph: Graph = graph
+        self.generate_tree()
+
+    def generate_tree(self):
+        visited: list[Node] = []
+        for node in self.graph.nodes:
+            if node not in visited:
+                new_node: TreeNode = TreeNode(node.node_id, node.data, [])
+                self.root.children.append(new_node)
+                self.dfs_traverse(new_node, node, self.graph, visited)
 
     def dfs_traverse(self, tree_node: TreeNode, node: Node, graph: Graph, visited: list[Node]):
         for neighbour in graph.get_neighbours_undirected(node):
@@ -27,9 +35,10 @@ class Tree(object):
         tree = {"name": self.root.node_id, "data": self.root.data, "children": []}
         self.dfs_dict(tree, self.root)
         return tree
-       #  with open("graph_explorer/app/static/tree.json", "w") as output:
-       # ## with open("tree.json", "w") as output:
-       #      json.dump(tree, output)
+
+    #  with open("graph_explorer/app/static/tree.json", "w") as output:
+    # ## with open("tree.json", "w") as output:
+    #      json.dump(tree, output)
 
     def dfs_dict(self, tree: dict, node: TreeNode):
         for child in node.children:

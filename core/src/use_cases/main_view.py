@@ -65,7 +65,7 @@ class MainView(object):
     def generate_from_search_query(self, search_text: str):
         if self.current_graph is None:
             return ''
-        new_graph: Graph = Graph('searched graph', None, [], [])
+        new_graph: Graph = Graph(self.current_graph.name, None, [], [])
         for node in self.current_graph.nodes:
             if is_node_valid_search(node, search_text):
                 new_graph.add_node(node)
@@ -75,7 +75,7 @@ class MainView(object):
     def generate_from_filter_query(self, attribute: str, comparator: str, value: str):
         if self.current_graph is None:
             return ''
-        new_graph: Graph = Graph('filtered graph', None, [], [])
+        new_graph: Graph = Graph(self.current_graph.name, None, [], [])
         for node in self.current_graph.nodes:
             if is_node_valid_filter(node, attribute, comparator, value):
                 new_graph.add_node(node)
