@@ -35,8 +35,8 @@ class Loader:
             self.visualizers.append(Plugin(plugin.Visualizer(), i))
             i += 1
 
-    def load_graph(self, source_plugin_id: int) -> Graph:
-        self.loaded_graphs[source_plugin_id] = self.sources[source_plugin_id].plugin.load(self.a)
+    def load_graph(self, source_plugin_id: int, config) -> Graph:
+        self.loaded_graphs[source_plugin_id] = self.sources[source_plugin_id].plugin.load(config)
         return self.loaded_graphs[source_plugin_id]
 
     def get_sources(self) -> list[Plugin]:
@@ -45,11 +45,17 @@ class Loader:
     def get_visualizers(self) -> list[Plugin]:
         return self.visualizers
 
-    def get_loaded_graph(self, plugin: int) -> Graph:
+    def is_graph_loaded(self, source_plugin_id: int) -> bool:
+        return source_plugin_id in self.loaded_graphs.keys()
+
+    def get_loaded_graph(self, plugin: int, config: dict) -> Graph:
         if plugin in self.loaded_graphs.keys():
             return self.loaded_graphs[plugin]
         else:
-            return self.load_graph(plugin)
+            return self.load_graph(plugin, config)
 
     def set_loaded_graph(self, graph: Graph, plugin: int):
         self.loaded_graphs[plugin] = graph
+
+    def get_settings(self, plugin: int):
+        return self.sources[plugin].plugin.params()

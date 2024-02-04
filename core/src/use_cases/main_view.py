@@ -55,8 +55,8 @@ class MainView(object):
         self.current_visualizer_plugin_id: int = 0
         self.current_source_plugin_id: int = 0
 
-    def generate_main_view(self, source_plugin_id: int, visualizer_plugin_id: int):
-        self.current_graph = self.loader.get_loaded_graph(source_plugin_id)
+    def generate_main_view(self, source_plugin_id: int, visualizer_plugin_id: int, config: dict):
+        self.current_graph = self.loader.get_loaded_graph(source_plugin_id, config)
         self.full_graph = copy.deepcopy(self.current_graph)
         self.current_source_plugin_id = source_plugin_id
         self.current_visualizer_plugin_id = visualizer_plugin_id

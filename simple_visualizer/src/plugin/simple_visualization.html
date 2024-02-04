@@ -52,7 +52,7 @@
         .scaleExtent([0.01, 10])
         .on('zoom', zoomed);
 
-    var svg = d3.select('svg')
+    var svg = d3.select('#visualization')
         .attr('width', 1000)
         .attr('height', 1000)
         .call(zoom);
