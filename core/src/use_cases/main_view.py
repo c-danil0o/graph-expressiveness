@@ -2,7 +2,6 @@ import copy
 
 from core.src.use_cases.loader import Loader
 from api.src.types.graph import Graph, Node, Edge
-from core.src.models.plugin import Plugin
 
 
 def is_node_valid_search(node: Node, search_text: str) -> bool:
@@ -45,56 +44,88 @@ def is_node_valid_filter(node: Node, attribute: str, comparator: str, value: str
             return False
 
 
+class Workspace(object):
+    def __init__(self, current_graph: Graph = None, full_graph: Graph = None):
+        self.current_graph: Graph = current_graph
+        self.full_graph: Graph = full_graph
+        self.visualizer_id = -1
+        self.source_id = -1
+
+    def set_current_graph(self, graph: Graph):
+        self.current_graph = graph
+
+    def set_full_graph(self, graph: Graph):
+        self.full_graph = graph
+
+    def is_loaded(self) -> bool:
+        return self.current_graph is not None
+
+    def set_visualizer_id(self, visualizer_id: int):
+        self.visualizer_id = visualizer_id
+
+    def set_source_id(self, source_id: int):
+        self.source_id = source_id
+
 class MainView(object):
     def __init__(self):
         self.loader = Loader()
         self.sources = self.loader.sources
         self.visualizers = self.loader.visualizers
-        self.full_graph: Graph = None
-        self.current_graph: Graph = None
-        self.current_visualizer_plugin_id: int = 0
-        self.current_source_plugin_id: int = 0
+        self.current_workspace: int = 1
+        self.workspaces: dict[int, Workspace] = {1: Workspace(), 2: Workspace(), 3: Workspace()}
 
-    def generate_main_view(self, source_plugin_id: int, visualizer_plugin_id: int, config: dict):
-        self.current_graph = self.loader.get_loaded_graph(source_plugin_id, config)
-        self.full_graph = copy.deepcopy(self.current_graph)
-        self.current_source_plugin_id = source_plugin_id
-        self.current_visualizer_plugin_id = visualizer_plugin_id
-        return self.visualizers[visualizer_plugin_id].plugin.show(self.current_graph)
+    def generate_main_view(self, source_plugin_id: int, visualizer_plugin_id: int, config: dict, workspace_id: int):
+        self.workspaces[workspace_id].set_current_graph(self.loader.get_loaded_graph(source_plugin_id, config))
+        self.workspaces[workspace_id].set_full_graph(copy.deepcopy(self.workspaces[workspace_id].current_graph))
+        self.workspaces[workspace_id].set_visualizer_id(visualizer_plugin_id)
+        self.workspaces[workspace_id].set_source_id(source_plugin_id)
 
-    def generate_from_search_query(self, search_text: str):
-        if self.current_graph is None:
+        return self.visualizers[visualizer_plugin_id].plugin.show(self.workspaces[workspace_id].current_graph)
+
+    def generate_from_search_query(self, search_text: str, workspace_id: int):
+        if self.workspaces[workspace_id].current_graph is None:
             return ''
-        new_graph: Graph = Graph(self.current_graph.name, None, [], [])
-        for node in self.current_graph.nodes:
+        new_graph: Graph = Graph(self.workspaces[workspace_id].current_graph.name, None, [], [])
+        for node in self.workspaces[workspace_id].current_graph.nodes:
             if is_node_valid_search(node, search_text):
                 new_graph.add_node(node)
-        self.add_edges(new_graph)
-        return self.visualizers[self.current_visualizer_plugin_id].plugin.show(new_graph)
+        self.add_edges(new_graph, workspace_id)
+        self.workspaces[workspace_id].set_current_graph(new_graph)
+        return self.visualizers[self.workspaces[workspace_id].visualizer_id].plugin.show(new_graph)
 
-    def generate_from_filter_query(self, attribute: str, comparator: str, value: str):
-        if self.current_graph is None:
+    def generate_from_filter_query(self, attribute: str, comparator: str, value: str, workspace_id: int):
+        if self.workspaces[workspace_id].current_graph is None:
             return ''
-        new_graph: Graph = Graph(self.current_graph.name, None, [], [])
-        for node in self.current_graph.nodes:
+        new_graph: Graph = Graph(self.workspaces[workspace_id].current_graph.name, None, [], [])
+        for node in self.workspaces[workspace_id].current_graph.nodes:
             if is_node_valid_filter(node, attribute, comparator, value):
                 new_graph.add_node(node)
-        self.add_edges(new_graph)
-        return self.visualizers[self.current_visualizer_plugin_id].plugin.show(new_graph)
+        self.add_edges(new_graph, workspace_id)
+        self.workspaces[workspace_id].set_current_graph(new_graph)
+        return self.visualizers[self.workspaces[workspace_id].visualizer_id].plugin.show(new_graph)
 
-    def clear_filters(self):
-        if self.full_graph is None:
+    def clear_filters(self, workspace_id: int):
+        if self.workspaces[workspace_id].full_graph is None:
             return ''
-        self.current_graph = copy.deepcopy(self.full_graph)
-        self.loader.set_loaded_graph(self.current_graph, self.current_source_plugin_id)
-        return self.visualizers[self.current_visualizer_plugin_id].plugin.show(self.full_graph)
+        self.workspaces[workspace_id].current_graph = copy.deepcopy(self.workspaces[workspace_id].full_graph)
+        return self.visualizers[self.workspaces[workspace_id].visualizer_id].plugin.show(self.workspaces[workspace_id].full_graph)
 
-    def add_edges(self, new_graph: Graph):
+    def add_edges(self, new_graph: Graph, workspace_id: int):
         if new_graph.get_node_count() > 0:
             new_graph.set_root(new_graph.nodes[0])
-            for edge in self.current_graph.edges:
+            for edge in self.workspaces[workspace_id].current_graph.edges:
                 if edge.source in new_graph.nodes and edge.destination in new_graph.nodes:
                     new_graph.add_edge(edge)
-        self.current_graph = new_graph
-        self.loader.set_loaded_graph(self.current_graph, self.current_source_plugin_id)
+        self.workspaces[workspace_id].current_graph = new_graph
 
+    def is_workspace_loaded(self, workspace_id: int):
+        return self.workspaces[workspace_id].is_loaded()
+
+    def render_workspace_graph(self, workspace_id: int):
+        return self.visualizers[self.workspaces[workspace_id].visualizer_id].plugin.show(self.workspaces[workspace_id].current_graph)
+
+    def get_workspace_visualizer(self, workspace_id: int):
+        return self.workspaces[workspace_id].visualizer_id
+
+    def get_workspace_source(self, workspace_id: int):
+        return self.workspaces[workspace_id].source_id

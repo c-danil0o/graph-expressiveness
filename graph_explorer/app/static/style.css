@@ -182,3 +182,30 @@ select {
   border: 1px solid #888;
   width: 40%; /* Could be more or less, depending on screen size */
 }
+.workspace-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.workspaces{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+.workspace_button{
+     align-self: center;
+    background-color: #46494B;
+    color: white;
+    padding: 5px 20px;
+    text-decoration: none;
+
+    cursor: pointer;
+    border: none;
+    border-radius: 40px;
+    width: fit-content;
+}
+.workspace-title{
+    font-size: 14px;
+}
