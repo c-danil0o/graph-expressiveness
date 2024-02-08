@@ -78,6 +78,7 @@ class MainView(object):
         self.workspaces[workspace_id].set_current_graph(self.loader.get_loaded_graph(source_plugin_id, config))
         self.workspaces[workspace_id].set_full_graph(copy.deepcopy(self.workspaces[workspace_id].current_graph))
         self.workspaces[workspace_id].set_visualizer_id(visualizer_plugin_id)
+        self.workspaces[workspace_id].set_source_id(source_plugin_id)
 
         return self.visualizers[visualizer_plugin_id].plugin.show(self.workspaces[workspace_id].current_graph)
 
