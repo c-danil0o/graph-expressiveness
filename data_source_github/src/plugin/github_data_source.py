@@ -6,8 +6,10 @@ from github import Github
 from api.src.types.graph import Graph, Node, Edge
 from api.src.types.param import Param
 
-_graph = Graph('Githun', None, [], [])
-access_token = "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"
+_graph = Graph('Github', None, [], [])
+access_token = "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"
+# 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
+# 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 moj
 user_info_cache = {}
 
 new_users = []
@@ -71,23 +73,34 @@ def populate_graph(depth: int):
         return populate_graph(depth)
 
 
-def load_graph(graph_name: str, depth: int) -> Graph:
-    login = Github(access_token)
-    user = login.get_user()
+def load_graph(graph_name: str, depth: int, input_access_token: str) -> Graph:
+    global access_token
+    if input_access_token is not "":
+        access_token = input_access_token
+
     _graph.name = graph_name
-    root: Node = Node(user.login, {"email": str(user.email), "name": str(user.name), "bio": str(user.bio), "repos": int(user.public_repos)})
-    _graph.set_root(root)
-    _graph.add_node(root)
-    last_users.append(user)
-    return populate_graph(depth)
+    try:
+        login = Github(access_token)
+        user = login.get_user()
+        root: Node = Node(user.login, {"email": str(user.email), "name": str(user.name), "bio": str(user.bio),
+                                       "repos": int(user.public_repos)})
+        _graph.set_root(root)
+        _graph.add_node(root)
+        last_users.append(user)
+        return populate_graph(depth)
+    except:
+        return _graph
+
 
 
 class DataSource(SourcePlugin):
     def params(self) -> list[Param]:
-        return [Param("Graph name", "graph_name", str), Param("Depth", "depth", int)]
+        return [Param("Graph name", "graph_name", str), Param("Depth", "depth", int),
+                Param("GitHub access token", "access_token", str)]
+
 
     def load(self, config: dict):
-        return load_graph(config['graph_name'], config["depth"])
+        return load_graph(config['graph_name'], config["depth"], config["access_token"])
 
     def identifier(self):
         return "graph-explorer-github-datasource"
