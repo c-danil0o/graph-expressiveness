@@ -64,7 +64,8 @@ def generate(request):
     return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                           "visualization_html": main_view.generate_main_view(source_id, visualizer_id,
                                                                                              plugin_config),
-                                          "tree_view_html": tree_view.generate_tree_view(), "source_id": source_id, "visualizer_id": visualizer_id})
+                                          "tree_view_html": tree_view.generate_tree_view(), "source_id": source_id,
+                                          "visualizer_id": visualizer_id})
 
 
 def search(request):
@@ -78,13 +79,15 @@ def search(request):
         tree_view = TreeView(loader.get_loaded_graph(source_id, plugin_config))
         return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                               "tree_view_html": tree_view.generate_tree_view(),
-                                              "visualization_html": main_view_html, "source_id": source_id, "visualizer_id": visualizer_id})
+                                              "visualization_html": main_view_html, "source_id": source_id,
+                                              "visualizer_id": visualizer_id})
     else:
         main_view_html = main_view.generate_from_search_query(search_text)
         tree_view = TreeView(loader.get_loaded_graph(source_id, plugin_config))
         return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                               "tree_view_html": tree_view.generate_tree_view(),
-                                              "visualization_html": main_view_html, "source_id": source_id, "visualizer_id": visualizer_id})
+                                              "visualization_html": main_view_html, "source_id": source_id,
+                                              "visualizer_id": visualizer_id})
 
 
 def clear_filters(request):
@@ -92,4 +95,10 @@ def clear_filters(request):
     tree_view = TreeView(loader.get_loaded_graph(source_id, plugin_config))
     return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                           "visualization_html": main_view_html,
-                                          "tree_view_html": tree_view.generate_tree_view(), "source_id": source_id, "visualizer_id": visualizer_id})
+                                          "tree_view_html": tree_view.generate_tree_view(), "source_id": source_id,
+                                          "visualizer_id": visualizer_id})
+
+
+def workspace(request, number: int):
+    print(number)
+    pass

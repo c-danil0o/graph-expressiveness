@@ -35,9 +35,9 @@
                     <select id="sources" name="sources">
                         {% for source in sources %}
                             {% if source_id == source.plugin_id %}
-                            <option selected value="{{ source.plugin_id }}">{{ source.plugin.name }}</option>
+                                <option selected value="{{ source.plugin_id }}">{{ source.plugin.name }}</option>
                             {% else %}
-                            <option  value="{{ source.plugin_id }}">{{ source.plugin.name }}</option>
+                                <option value="{{ source.plugin_id }}">{{ source.plugin.name }}</option>
                             {% endif %}
                         {% endfor %}
                     </select>
@@ -47,9 +47,10 @@
                     <select id="visualizers" name="visualizers">
                         {% for visualizer in visualizers %}
                             {% if visualizer_id == visualizer.plugin_id %}
-                            <option selected value="{{ visualizer.plugin_id }}">{{ visualizer.plugin.name }}</option>
+                                <option selected
+                                        value="{{ visualizer.plugin_id }}">{{ visualizer.plugin.name }}</option>
                             {% else %}
-                            <option  value="{{ visualizer.plugin_id }}">{{ visualizer.plugin.name }}</option>
+                                <option value="{{ visualizer.plugin_id }}">{{ visualizer.plugin.name }}</option>
                             {% endif %}
                         {% endfor %}
                     </select>
@@ -74,6 +75,15 @@
                 <button class="button_primary" type="submit">Filter</button>
 
             </form>
+            <div class="workspace-wrapper">
+                <span class="workspace-title">Workspaces</span>
+                <div class="workspaces">
+                    <a href="{% url 'workspace' 1 %}" class="workspace_button">1</a>
+                    <a href="{% url 'workspace' 2 %}" class="workspace_button">2</a>
+                    <a href="{% url 'workspace' 3 %}" class="workspace_button">3</a>
+                </div>
+            </div>
+
 
         </div>
 
