@@ -27,12 +27,12 @@ def index(request):
 
 
 def config(request):
-    global visualizer_id, source_id, workspace_id
+    global visualizer_id, source_id, workspace_id, plugin_config
     visualizer_id = int(request.POST.get("visualizers"))
     source_id = int(request.POST.get("sources"))
     print(visualizer_id, source_id)
     if 'show' in request.POST:
-        if loader.is_graph_loaded(source_id):
+        if loader.is_graph_loaded(source_id, plugin_config):
             #if main_view.is_workspace_loaded(workspace_id):
             return render_new_graph(request)
 
@@ -42,7 +42,7 @@ def config(request):
 
 
 def generate(request):
-    global visualizer_id, source_id, plugin_config
+    global visualizer_id, source_id, plugin_config, workspace_id
     plugin_settings = loader.get_settings(source_id)
     plugin_config = {}
     for setting in plugin_settings:
@@ -59,7 +59,7 @@ def generate(request):
 
 
 def search(request):
-    global plugin_config
+    global plugin_config, workspace_id, visualizer_id, source_id
     search_text: str = str(request.POST.get("query"))
     print(search_text)
     pattern = r'^(\w+)\s*(==|>|>=|<|<=|!=)\s*(.+)$'
