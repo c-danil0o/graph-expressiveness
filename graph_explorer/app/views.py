@@ -32,9 +32,12 @@ def config(request):
     source_id = int(request.POST.get("sources"))
     print(visualizer_id, source_id)
     if 'show' in request.POST:
-        if loader.is_graph_loaded(source_id, plugin_config):
-            #if main_view.is_workspace_loaded(workspace_id):
-            return render_new_graph(request)
+        if main_view.is_workspace_loaded(workspace_id):
+            if loader.is_graph_loaded(source_id, main_view.get_workspace_config(workspace_id)):
+                return change_visualizer(request, visualizer_id)
+        else:
+            if loader.is_plugin_loaded(source_id, plugin_config):
+                return render_new_graph(request)
 
     return render(request, 'index.html',
                   {"sources": loader.sources, "visualizers": loader.visualizers, "modal_opened": True,
@@ -104,6 +107,15 @@ def render_existing_graph(request):
     return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                           "visualization_html": main_view.render_workspace_graph(workspace_id),
                                           "tree_view_html": tree_view.generate_tree_view(), "source_id": main_view.get_workspace_source(workspace_id),
+                                          "visualizer_id": main_view.get_workspace_visualizer(workspace_id)})
+
+
+def change_visualizer(request, visualizer: int):
+    tree_view = TreeView(loader.get_loaded_graph(source_id, plugin_config))
+    return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
+                                          "visualization_html": main_view.change_visualizer(workspace_id, visualizer),
+                                          "tree_view_html": tree_view.generate_tree_view(),
+                                          "source_id": main_view.get_workspace_source(workspace_id),
                                           "visualizer_id": main_view.get_workspace_visualizer(workspace_id)})
 
 

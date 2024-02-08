@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3014b93b-d9bf-42e7-9d74-b3aa3cec1206" name="Changes" comment="merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/use_cases/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/use_cases/main_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/main_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_github/src/plugin/github_data_source.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_source_github/src/plugin/github_data_source.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graph_explorer/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +52,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "fix/multiple-graph-instances",
     "last_opened_file_path": "/home/dc/Code/SOK/graph_exp/graph_explorer/graph_explorer/settings.py",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -210,6 +208,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="feat: added workspaces to website #32" />
+    <MESSAGE value="fix: fixed multiple graph instances on same plugin with different configs #36" />
     <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
   <component name="XDebuggerManager">
