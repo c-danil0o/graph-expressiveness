@@ -5,25 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3014b93b-d9bf-42e7-9d74-b3aa3cec1206" name="Changes" comment="merge">
-      <change afterPath="$PROJECT_DIR$/api/src/types/param.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/services/source_plugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/services/source_plugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clean.sh" beforeDir="false" afterPath="$PROJECT_DIR$/clean.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/models/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/models/tree.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/use_cases/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/use_cases/main_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/main_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_ethereum/src/plugin/eth_data_source.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_source_ethereum/src/plugin/eth_data_source.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_source_github/src/plugin/github_data_source.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_source_github/src/plugin/github_data_source.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_explorer/app/static/core/d3.v3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_explorer/app/static/core/graph.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_explorer/app/static/core/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_explorer/app/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/static/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_explorer/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_explorer/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graph_explorer/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graph_explorer/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_explorer/graph_explorer/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/graph_explorer/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_visualizer/src/plugin/simple_visualization.html" beforeDir="false" afterPath="$PROJECT_DIR$/simple_visualizer/src/plugin/simple_visualization.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +54,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/plugin-config",
+    "git-widget-placeholder": "feature/workspace",
     "last_opened_file_path": "/home/dc/Code/SOK/graph_exp/graph_explorer/graph_explorer/settings.py",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
