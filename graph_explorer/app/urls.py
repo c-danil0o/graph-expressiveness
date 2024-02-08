@@ -8,6 +8,6 @@ urlpatterns = [
     path('generate/', views.generate, name='generated_graph'),
     path('search/', views.search, name='search_graph'),
     path('clear/', views.clear_filters, name='clear_filters'),
-    path('workspace/<int:number>/', views.workspace, name='workspace')
+    path('set_workspace/<int:number>/', views.set_workspace, name='workspace')
     # path('simple/', views.test, name='show_graph')
 ]
