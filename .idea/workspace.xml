@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="282cd43f-491a-4b8d-aa25-50d4b4317def" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/block_visualizer/src/plugin/block_visualization.html" beforeDir="false" afterPath="$PROJECT_DIR$/block_visualizer/src/plugin/block_visualization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/use_cases/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/use_cases/main_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/main_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/templates/main_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/templates/main_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_explorer/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simple_visualizer/src/plugin/simple_visualization.html" beforeDir="false" afterPath="$PROJECT_DIR$/simple_visualizer/src/plugin/simple_visualization.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "develop",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>

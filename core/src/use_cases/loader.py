@@ -36,7 +36,6 @@ class Loader:
 
     def load_graph(self, source_plugin_id: int, config) -> Graph:
         key = hash(str(source_plugin_id) + str(config))
-        print(key)
         self.loaded_graphs[key] = self.sources[source_plugin_id].plugin.load(config)
         return self.loaded_graphs[key]
 
