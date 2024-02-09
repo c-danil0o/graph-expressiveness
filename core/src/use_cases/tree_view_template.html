@@ -35,13 +35,15 @@
     </style>
     <div class="tree"></div>
     <script>
+        var updateTree;
+        var root;
+
         function chart(data) {
             let margin = {top: 50, right: 40, bottom: 30, left: 20},
                 height = 600
             barHeight = Object.keys(data.children[0].data).length * 33
             let i = 0,
-                duration = 300,
-                root;
+                duration = 300;
 
             let nodeEnterTransition = d3.transition()
                 .duration(200)
@@ -55,14 +57,11 @@
             root = d3.hierarchy(data);
             root.x0 = 0;
             root.y0 = 0;
-             root.eachAfter((n) => {
+            root.eachAfter((n) => {
                 n._children = n.children
                 n.children = null
             })
             update(root);
-            console.log(root);
-
-
 
 
             function update(source) {
@@ -72,7 +71,7 @@
 
                 var height = Math.max(2000, nodes.length * barHeight + margin.top + margin.bottom);
 
-                d3.select("svg").transition()
+                d3.select(".tree svg").transition()
                     .attr("height", height)
                     .attr("width", 1500)
 
@@ -89,6 +88,7 @@
                 var nodeEnter = node.enter().append("g")
                     .attr("class", "node")
                     .attr("transform", () => "translate(" + source.y0 + "," + source.x0 + ")")
+                    .attr("id", (d) => 'id'+d.id)
                     .on("click", click)
                 ;
 
@@ -116,12 +116,7 @@
                     .attr("dy", 3.5)
                     .attr("dx", 5.5)
                     .text((d) => d.data.name)
-                    .on("mouseover", function (d) {
-                        d3.select(this).classed("selected", true);
-                    })
-                    .on("mouseout", function (d) {
-                        d3.selectAll(".selected").classed("selected", false);
-                    });
+                    .attr("fill", (d) => d.selected ? "red" : "black");
 
                 nodeEnter.append("text")
                     .each(function (d) {
@@ -137,7 +132,7 @@
                         for (var i = 1; i < data.length; i++) {
                             text.append("tspan")
                                 .attr('x', 20)
-                                .attr('y', 25 + 20*i)
+                                .attr('y', 25 + 20 * i)
                                 .text(data[i])
                         }
                     });
@@ -183,10 +178,34 @@
                 update(d);
             }
 
+            updateTree = update
+
+        }
+
+        function notifyTreeView(node_id) {
+            root.eachBefore((d) => {
+                if (d.selected) {
+                    d.selected = null
+                    d3.select("#id" + d.id).remove()
+                }
+                if (d._children != null) {
+                    d.children = d._children;
+                    d._children = null;
+                }
+                if (d.data.name === node_id) {
+                    d.selected = true
+                    d3.select("#id" + d.id).remove()
+
+                }
+
+
+            })
+            updateTree(root)
         }
 
         var input = {{ input_tree|safe }}
-        chart(input);
-    </script>
+        chart(input)
 
+
+    </script>
 {% endblock %}
