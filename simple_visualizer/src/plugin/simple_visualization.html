@@ -80,7 +80,6 @@
         .enter().append('g')
         .attr('class', 'node')
         .attr('id', function(d) { return d.name; })
-        .on('click', function() { nodeClick(this); })
         .call(drag);
 
     node.append('circle')
