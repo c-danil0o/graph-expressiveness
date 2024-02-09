@@ -1,4 +1,7 @@
+import os
+
 from django.template.loader import render_to_string
+from jinja2 import Environment, FileSystemLoader
 
 from api.src.types.graph import Graph
 from core.src.models.tree import Tree
@@ -17,4 +20,9 @@ class TreeView(object):
         context = {
             "input_tree": self.tree.get_json(),
         }
-        return render_to_string('tree_view_template.html', context)
+
+        path = os.path.join(os.path.dirname(__file__))
+        jinja_env = Environment(loader=FileSystemLoader(path))
+        template = jinja_env.get_template('tree_view_template.html')
+        return template.render(context)
+
