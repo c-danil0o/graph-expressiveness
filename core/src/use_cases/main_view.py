@@ -142,3 +142,6 @@ class MainView(object):
     def change_visualizer(self, workspace_id: int, visualizer_id: int):
         self.workspaces[workspace_id].set_visualizer_id(visualizer_id)
         return self.visualizers[self.workspaces[workspace_id].visualizer_id].plugin.show(self.workspaces[workspace_id].current_graph)
+
+    def get_workspace_graph(self, workspace_id: int):
+        return self.workspaces[workspace_id].current_graph

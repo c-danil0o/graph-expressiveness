@@ -36,7 +36,7 @@ def config(request):
             if loader.is_graph_loaded(source_id, main_view.get_workspace_config(workspace_id)):
                 return change_visualizer(request, visualizer_id)
         else:
-            if loader.is_plugin_loaded(source_id, plugin_config):
+            if loader.is_graph_loaded(source_id, plugin_config):
                 return render_new_graph(request)
 
     return render(request, 'index.html',
@@ -70,14 +70,14 @@ def search(request):
     if match:
         main_view_html = main_view.generate_from_filter_query(match.group(1), match.group(2), match.group(3),
                                                               workspace_id)
-        tree_view = TreeView(loader.get_loaded_graph(source_id, plugin_config))
+        tree_view = TreeView(main_view.get_workspace_graph(workspace_id))
         return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                               "tree_view_html": tree_view.generate_tree_view(),
                                               "visualization_html": main_view_html, "source_id": source_id,
                                               "visualizer_id": visualizer_id})
     else:
         main_view_html = main_view.generate_from_search_query(search_text, workspace_id)
-        tree_view = TreeView(loader.get_loaded_graph(source_id, plugin_config))
+        tree_view = TreeView(main_view.get_workspace_graph(workspace_id))
         return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                               "tree_view_html": tree_view.generate_tree_view(),
                                               "visualization_html": main_view_html, "source_id": source_id,
@@ -86,7 +86,7 @@ def search(request):
 
 def clear_filters(request):
     main_view_html = main_view.clear_filters(workspace_id)
-    tree_view = TreeView(loader.get_loaded_graph(source_id, plugin_config))
+    tree_view = TreeView(main_view.get_workspace_graph(workspace_id))
     return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                           "visualization_html": main_view_html,
                                           "tree_view_html": tree_view.generate_tree_view(), "source_id": source_id,
@@ -103,7 +103,8 @@ def set_workspace(request, number: int):
 
 
 def render_existing_graph(request):
-    tree_view = TreeView(loader.get_loaded_graph(source_id, plugin_config))
+    global workspace_id
+    tree_view = TreeView(main_view.get_workspace_graph(workspace_id))
     return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                           "visualization_html": main_view.render_workspace_graph(workspace_id),
                                           "tree_view_html": tree_view.generate_tree_view(), "source_id": main_view.get_workspace_source(workspace_id),
@@ -111,7 +112,8 @@ def render_existing_graph(request):
 
 
 def change_visualizer(request, visualizer: int):
-    tree_view = TreeView(loader.get_loaded_graph(source_id, plugin_config))
+    global workspace_id
+    tree_view = TreeView(main_view.get_workspace_graph(workspace_id))
     return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
                                           "visualization_html": main_view.change_visualizer(workspace_id, visualizer),
                                           "tree_view_html": tree_view.generate_tree_view(),

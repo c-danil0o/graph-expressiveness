@@ -2,9 +2,40 @@
     #visualization {
             width:100%;
             height:100%;
-        }
-</style>
+    }
+    #node-info{
+        padding: 10px;
+        background: white;
+        font-size: 10px;
+        width: 90%;
+        margin: 10px auto;
+        border-radius: 15px;
+        height: 30px;
+        word-wrap: break-word;
+        z-index: 1;
+    }
 
+</style>
+<div id="node-info"></div>
 <svg id="visualization">
     {{ visualization_html|safe }}
 </svg>
+
+<script>
+    function mouseOverFunction(d) {
+        let info = "";
+        for (const [key, value] of Object.entries(d.data)) {
+            info += key + ' : ' + value + ' '
+        }
+        document.getElementById("node-info").innerHTML = info
+    }
+
+    function clickFunction(d) {
+
+    }
+
+    d3.selectAll("#graph g g")
+        .on('mouseover', function (d) {mouseOverFunction(d);})
+        .on('click', function (d) {clickFunction(d);})
+
+</script>
