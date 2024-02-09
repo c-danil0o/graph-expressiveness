@@ -1,4 +1,6 @@
 import copy
+import re
+
 
 from core.src.use_cases.loader import Loader
 from api.src.types.graph import Graph, Node, Edge
@@ -87,6 +89,14 @@ class MainView(object):
         self.workspaces[workspace_id].set_config(config)
 
         return self.visualizers[visualizer_plugin_id].plugin.show(self.workspaces[workspace_id].current_graph)
+
+    def generate_with_filter(self, search_text: str, workspace_id: int):
+        pattern = r'^(\w+)\s*(==|>|>=|<|<=|!=)\s*(.+)$'
+        match = re.match(pattern, search_text)
+        if match:
+            return self.generate_from_filter_query(match.group(1), match.group(2), match.group(3), workspace_id)
+        else:
+            return self.generate_from_search_query(search_text, workspace_id)
 
     def generate_from_search_query(self, search_text: str, workspace_id: int):
         if self.workspaces[workspace_id].current_graph is None:

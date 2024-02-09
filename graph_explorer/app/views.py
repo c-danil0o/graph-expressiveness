@@ -64,24 +64,12 @@ def generate(request):
 def search(request):
     global plugin_config, workspace_id, visualizer_id, source_id
     search_text: str = str(request.POST.get("query"))
-    print(search_text)
-    pattern = r'^(\w+)\s*(==|>|>=|<|<=|!=)\s*(.+)$'
-    match = re.match(pattern, search_text)
-    if match:
-        main_view_html = main_view.generate_from_filter_query(match.group(1), match.group(2), match.group(3),
-                                                              workspace_id)
-        tree_view = TreeView(main_view.get_workspace_graph(workspace_id))
-        return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
-                                              "tree_view_html": tree_view.generate_tree_view(),
-                                              "visualization_html": main_view_html, "source_id": source_id,
-                                              "visualizer_id": visualizer_id})
-    else:
-        main_view_html = main_view.generate_from_search_query(search_text, workspace_id)
-        tree_view = TreeView(main_view.get_workspace_graph(workspace_id))
-        return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
-                                              "tree_view_html": tree_view.generate_tree_view(),
-                                              "visualization_html": main_view_html, "source_id": source_id,
-                                              "visualizer_id": visualizer_id})
+    main_view_html = main_view.generate_with_filter(search_text, workspace_id)
+    tree_view = TreeView(main_view.get_workspace_graph(workspace_id))
+    return render(request, 'index.html', {"sources": loader.sources, "visualizers": loader.visualizers,
+                                          "tree_view_html": tree_view.generate_tree_view(),
+                                          "visualization_html": main_view_html, "source_id": source_id,
+                                          "visualizer_id": visualizer_id})
 
 
 def clear_filters(request):
