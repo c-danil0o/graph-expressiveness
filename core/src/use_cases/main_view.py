@@ -50,6 +50,7 @@ class Workspace(object):
         self.full_graph: Graph = full_graph
         self.visualizer_id = -1
         self.source_id = -1
+        self.config = {}
 
     def set_current_graph(self, graph: Graph):
         self.current_graph = graph
@@ -66,6 +67,9 @@ class Workspace(object):
     def set_source_id(self, source_id: int):
         self.source_id = source_id
 
+    def set_config(self, config):
+        self.config = config
+
 class MainView(object):
     def __init__(self):
         self.loader = Loader()
@@ -76,9 +80,11 @@ class MainView(object):
 
     def generate_main_view(self, source_plugin_id: int, visualizer_plugin_id: int, config: dict, workspace_id: int):
         self.workspaces[workspace_id].set_current_graph(self.loader.get_loaded_graph(source_plugin_id, config))
+        print(self.workspaces[workspace_id].current_graph)
         self.workspaces[workspace_id].set_full_graph(copy.deepcopy(self.workspaces[workspace_id].current_graph))
         self.workspaces[workspace_id].set_visualizer_id(visualizer_plugin_id)
         self.workspaces[workspace_id].set_source_id(source_plugin_id)
+        self.workspaces[workspace_id].set_config(config)
 
         return self.visualizers[visualizer_plugin_id].plugin.show(self.workspaces[workspace_id].current_graph)
 
@@ -129,3 +135,10 @@ class MainView(object):
 
     def get_workspace_source(self, workspace_id: int):
         return self.workspaces[workspace_id].source_id
+
+    def get_workspace_config(self, workspace_id: int):
+        return self.workspaces[workspace_id].config
+
+    def change_visualizer(self, workspace_id: int, visualizer_id: int):
+        self.workspaces[workspace_id].set_visualizer_id(visualizer_id)
+        return self.visualizers[self.workspaces[workspace_id].visualizer_id].plugin.show(self.workspaces[workspace_id].current_graph)
