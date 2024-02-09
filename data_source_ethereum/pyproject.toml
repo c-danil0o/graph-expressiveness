@@ -10,6 +10,9 @@ authors = [
 description = "Ethereum data source plugin for graph explorer"
 requires-python = ">=3.7"
 version = "0.1"
+dependencies = [
+    "web3>6.10.0"
+]
 
 [project.scripts]
 
