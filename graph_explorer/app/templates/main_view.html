@@ -55,6 +55,20 @@
             clickFunction(d);
         })
 
+
+    function updateMainViewClicked(node_id) {
+        nodes.each(function (node) {
+            if (node.node_id === node_id) {
+                if (clicked_object != null) {
+                    clicked_object.clicked = null
+                }
+                clicked_object = node
+                node.clicked = true
+                update()
+            }
+        })
+    }
+
     let update = function () {
         nodes.each(function () {
             const parent = d3.select(this);
