@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-explorer-ethereum-source"
+authors = [
+    {name = "Danilo Cvijetic"}
+]
+description = "Ethereum data source plugin for graph explorer"
+requires-python = ">=3.7"
+version = "0.1"
+dependencies = [
+    "web3>6.10.0"
+]
+
+[project.scripts]
+
+[project.entry-points."graph.sources"]
+load = "plugin.eth_data_source"
+#identifier = "plugin.data_source.EthereumDatasource:identifier"

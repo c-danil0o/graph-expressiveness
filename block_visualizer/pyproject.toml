@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-explorer-block-visualizer"
+authors = [
+    {name = "Vladimir Cornenki"}
+]
+description = "Block visualizer plugin for graph explorer"
+requires-python = ">=3.7"
+dependencies = [
+    "jinja2>=3.1.2"
+]
+
+version = "0.1"
+
+[project.scripts]
+
+[project.entry-points."graph.visualizers"]
+load = "plugin.block_visualizer"

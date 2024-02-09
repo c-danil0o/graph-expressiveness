@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-explorer-github-source"
+authors = [
+    {name = "Aleksa Perovic"}
+]
+description = "GitHub data source visualizer plugin for graph explorer"
+requires-python = ">=3.7"
+version = "0.1"
+dependencies = [
+    "PyGithub>=2.2.0"
+]
+
+[project.scripts]
+
+[project.entry-points."graph.sources"]
+load = "plugin.github_data_source"
