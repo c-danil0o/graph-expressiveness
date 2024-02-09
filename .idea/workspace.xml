@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3014b93b-d9bf-42e7-9d74-b3aa3cec1206" name="Changes" comment="merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/use_cases/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/use_cases/main_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/use_cases/main_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_explorer/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graph_explorer/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_explorer/app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +18,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Python Script" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -54,7 +52,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/workspace",
+    "git-widget-placeholder": "fix/multiple-graph-instances",
     "last_opened_file_path": "/home/dc/Code/SOK/graph_exp/graph_explorer/graph_explorer/settings.py",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -196,8 +194,21 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
+    <MESSAGE value="feat: added workspaces to website #32" />
+    <MESSAGE value="fix: fixed multiple graph instances on same plugin with different configs #36" />
     <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
   <component name="XDebuggerManager">

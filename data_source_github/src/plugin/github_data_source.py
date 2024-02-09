@@ -6,7 +6,7 @@ from github import Github
 from api.src.types.graph import Graph, Node, Edge
 from api.src.types.param import Param
 
-_graph = Graph('Github', None, [], [])
+_graph = Graph
 access_token = "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"
 # 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
 # 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 moj
@@ -73,8 +73,9 @@ def populate_graph(depth: int):
         return populate_graph(depth)
 
 
-def load_graph(graph_name: str, depth: int, input_access_token: str) -> Graph:
-    global access_token
+def load_graph(graph_name: str, depth: int, input_access_token: str = "") -> Graph:
+    global access_token, _graph
+    _graph = Graph('Github', None, [], [])
     if input_access_token is not "":
         access_token = input_access_token
 

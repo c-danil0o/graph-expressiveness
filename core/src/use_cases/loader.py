@@ -35,8 +35,10 @@ class Loader:
             i += 1
 
     def load_graph(self, source_plugin_id: int, config) -> Graph:
-        self.loaded_graphs[source_plugin_id] = self.sources[source_plugin_id].plugin.load(config)
-        return self.loaded_graphs[source_plugin_id]
+        key = hash(str(source_plugin_id) + str(config))
+        print(key)
+        self.loaded_graphs[key] = self.sources[source_plugin_id].plugin.load(config)
+        return self.loaded_graphs[key]
 
     def get_sources(self) -> list[Plugin]:
         return self.sources
@@ -44,17 +46,15 @@ class Loader:
     def get_visualizers(self) -> list[Plugin]:
         return self.visualizers
 
-    def is_graph_loaded(self, source_plugin_id: int) -> bool:
-        return source_plugin_id in self.loaded_graphs.keys()
+    def is_graph_loaded(self, source_plugin_id: int, config: dict) -> bool:
+        return hash(str(source_plugin_id) + str(config)) in self.loaded_graphs.keys()
 
     def get_loaded_graph(self, plugin: int, config: dict) -> Graph:
-        if plugin in self.loaded_graphs.keys():
-            return self.loaded_graphs[plugin]
+        key = hash(str(plugin) + str(config))
+        if key in self.loaded_graphs.keys():
+            return self.loaded_graphs[key]
         else:
             return self.load_graph(plugin, config)
-
-    def set_loaded_graph(self, graph: Graph, plugin: int):
-        self.loaded_graphs[plugin] = graph
 
     def get_settings(self, plugin: int):
         return self.sources[plugin].plugin.params()
