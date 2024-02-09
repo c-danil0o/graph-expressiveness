@@ -18,6 +18,12 @@
   pointer-events: all;
 }
 
+#rct{
+    stroke: white;
+    stroke-width: 3;
+    fill: none;
+}
+
 .node-block rect {
   fill: lightgrey;
   stroke: #3182bd;
@@ -60,7 +66,7 @@
         .on('end', dragend);
 
     var zoom = d3.zoom()
-        .scaleExtent([0.01, 10])
+        .scaleExtent([0.5, 10])
         .on('zoom', zoomed);
 
     var svg = d3.select('#visualization')
@@ -69,6 +75,11 @@
         .call(zoom);
 
     var container = svg.append('g');
+
+    var rect = container.append("rect")
+        .attr("id","rct")
+        .attr("width", 1600)
+        .attr("height", 1000)
 
     var link = container.selectAll('.link')
         .data(links)
@@ -136,6 +147,24 @@
 
     function zoomed() {
         container.attr('transform', d3.event.transform);
+
+        const centerTransform = d3.event.transform;
+
+        const scaleX = centerTransform.k;
+        const scaleY = centerTransform.k;
+        const translateX = centerTransform.x;
+        const translateY = centerTransform.y;
+
+        const rectWidth = 1600 / scaleX;
+        const rectHeight = 1000 / scaleY;
+
+        const rectX = -translateX / scaleX;
+        const rectY = -translateY / scaleY;
+
+        rect.attr("x", rectX)
+            .attr("y", rectY)
+            .attr("width", rectWidth)
+            .attr("height", rectHeight)
     }
 
     function dragstart(d) {
