@@ -44,8 +44,8 @@ class Loader:
         key = hash(str(source_plugin_id) + str(config))
         config_copy = config.copy()
         config_copy.pop("graph_name")
-        file_name = hash(self.source_plugin_names[source_plugin_id] + str(config_copy))
-        file_path = os.path.join("saved_graphs", str(file_name)+".pkl")
+        file_name = self.create_file_name(source_plugin_id, config_copy)
+        file_path = os.path.join("saved_graphs", str(file_name))
         if os.path.exists(file_path):
             with open(file_path, 'rb') as file:
                 self.loaded_graphs[key] = pickle.load(file)
@@ -75,4 +75,11 @@ class Loader:
 
     def get_settings(self, plugin: int):
         return self.sources[plugin].plugin.params()
+
+    def create_file_name(self, source_plugin_id, config) -> str:
+        file_name: str = self.source_plugin_names[source_plugin_id][:3]
+        for value in config.values():
+            file_name += str(value)
+        file_name += ".pkl"
+        return file_name
 
