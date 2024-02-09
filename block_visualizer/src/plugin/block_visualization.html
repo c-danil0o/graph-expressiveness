@@ -66,7 +66,7 @@
         .on('end', dragend);
 
     var zoom = d3.zoom()
-        .scaleExtent([0.5, 10])
+        .scaleExtent([0.2, 10])
         .on('zoom', zoomed);
 
     var svg = d3.select('#visualization')

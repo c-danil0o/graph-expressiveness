@@ -41,7 +41,7 @@ class Loader:
             i += 1
 
     def load_graph(self, source_plugin_id: int, config) -> Graph:
-        key = hash(str(source_plugin_id) + str(config))
+        key = hash(str(source_plugin_id) + str(config.pop('graph_name')))
         file_path = os.path.join("saved_graphs", str(key)+".pkl")
         if os.path.exists(file_path):
             with open(file_path, 'rb') as file:
